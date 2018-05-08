@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="O programie..."/>
+            <MenuItem Header="O programie..." Margin="2" Padding="2"/>
         </Menu>
         <Grid Grid.Row="1" ShowGridLines="True">
             <Grid.ColumnDefinitions>
