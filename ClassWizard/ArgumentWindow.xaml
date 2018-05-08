@@ -26,7 +26,7 @@
                 <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0">Typ danych:</Label>
                 <ComboBox Grid.Row="1" Grid.Column="1"></ComboBox>
-                <WrapPanel Grid.Row="2" Grid.ColumnSpan="2">
+                <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                     <CheckBox>out</CheckBox>
                     <CheckBox>ref</CheckBox>
                     <CheckBox>in</CheckBox>
