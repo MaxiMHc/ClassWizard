@@ -15,6 +15,32 @@
         <Menu Grid.Row="0">
             <MenuItem Header="O programie..."/>
         </Menu>
-
+        <Grid Grid.Row="1" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Klasy i interfejsy do wygenerowania:</Label>
+            <ListBox Grid.Row="1" Grid.Column="0">
+                <ListBoxItem>public class Point</ListBoxItem>
+            </ListBox>
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <Button>↑</Button>
+                <Button>↓</Button>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button>Dodaj</Button>
+                <Button>Edytuj</Button>
+                <Button>Usuń</Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            
+        </Grid>
     </Grid>
 </Window>
