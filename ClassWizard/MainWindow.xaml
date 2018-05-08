@@ -26,17 +26,17 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Klasy i interfejsy do wygenerowania:</Label>
-            <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListBox Grid.Row="1" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListBoxItem>public class Point</ListBoxItem>
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <Button>↑</Button>
-                <Button>↓</Button>
+                <Button Margin="3" Padding="2" Width="20">↑</Button>
+                <Button Margin="3" Padding="2" Width="20">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button>Dodaj</Button>
-                <Button>Edytuj</Button>
-                <Button>Usuń</Button>
+                <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
+                <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
+                <Button Margin="3" Padding="2" Width="80">Usuń</Button>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" ShowGridLines="True">
@@ -44,11 +44,11 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible"></TextBox>
+            <TextBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12"></TextBox>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button>Generuj kod!</Button>
-                <Button>Skopiuj do schowka</Button>
-                <Button>Zapisz do pliku</Button>
+                <Button Margin="3" Padding="2">Generuj kod!</Button>
+                <Button Margin="3" Padding="2">Skopiuj do schowka</Button>
+                <Button Margin="3" Padding="2">Zapisz do pliku</Button>
             </StackPanel>
         </Grid>
     </Grid>
