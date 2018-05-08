@@ -44,7 +44,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12"></TextBox>
+            <TextBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Margin="3" Padding="2">Generuj kod!</Button>
                 <Button Margin="3" Padding="2">Skopiuj do schowka</Button>
