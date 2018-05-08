@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
         Title="Wizard Klas" Height="425" Width="310" ResizeMode="CanMinimize">
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -15,7 +15,7 @@
         <Menu Grid.Row="0">
             <MenuItem Header="O programie..." Margin="2" Padding="2"/>
         </Menu>
-        <Grid Grid.Row="1" ShowGridLines="True">
+        <Grid Grid.Row="1" ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -39,7 +39,7 @@
                 <Button Margin="3" Padding="2" Width="80">Usuń</Button>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="2" ShowGridLines="True">
+        <Grid Grid.Row="2" ShowGridLines="False">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
