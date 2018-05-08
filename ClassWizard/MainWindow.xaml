@@ -12,7 +12,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+        <Menu Grid.Row="0">
+            <MenuItem Header="O programie..."/>
+        </Menu>
 
     </Grid>
 </Window>
