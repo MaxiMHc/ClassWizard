@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
         Title="Wizard Klas" Height="350" Width="525">
-    <Grid>
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+
     </Grid>
 </Window>
