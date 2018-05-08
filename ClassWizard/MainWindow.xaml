@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="Wizard Klas" Height="425" Width="300" ResizeMode="CanMinimize">
+        Title="Wizard Klas" Height="425" Width="310" ResizeMode="CanMinimize">
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
