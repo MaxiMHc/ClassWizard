@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="ArgumentWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="Wizard Klas - Dodaj/Edytuj Argument" Height="300" Width="300" ResizeMode="CanMinimize">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Ogólne">
+            <Grid ShowGridLines="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">Nazwa:</Label>
+                <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0">Typ danych:</Label>
+                <ComboBox Grid.Row="1" Grid.Column="1"></ComboBox>
+                <WrapPanel Grid.Row="2" Grid.ColumnSpan="2">
+                    <CheckBox>out</CheckBox>
+                    <CheckBox>ref</CheckBox>
+                    <CheckBox>in</CheckBox>
+                    <CheckBox>const</CheckBox>
+                    <CheckBox>params[]</CheckBox>
+                </WrapPanel>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+        </StackPanel>
     </Grid>
 </Window>
