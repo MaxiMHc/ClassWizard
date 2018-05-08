@@ -39,8 +39,17 @@
                 <Button>Usuń</Button>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="2">
-            
+        <Grid Grid.Row="2" ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible"></TextBox>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button>Generuj kod!</Button>
+                <Button>Skopiuj do schowka</Button>
+                <Button>Zapisz do pliku</Button>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
