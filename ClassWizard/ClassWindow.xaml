@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="ClassWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="ClassWindow" Height="400" Width="550" ResizeMode="CanMinimize">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Ogólne"></GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Dziedziczenie i implementacja interfejsów"></GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="Pola klasy"></GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Metody i konstruktory klasy"></GroupBox>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+        </StackPanel>
     </Grid>
 </Window>
