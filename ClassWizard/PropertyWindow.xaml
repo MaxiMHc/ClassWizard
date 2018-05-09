@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="PropertyWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="Wizard Klas - Dodaj/Edytuj Pole" Height="300" Width="300" ResizeMode="CanMinimize">
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Ogólne">
+            <Grid ShowGridLines="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="5" Padding="3">Nazwa:</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Typ danych:</Label>
+                <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
+                    <WrapPanel  HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center">
+                        <CheckBox Margin="10">static</CheckBox>
+                        <CheckBox Margin="10">final</CheckBox>
+                        <CheckBox Margin="10">const</CheckBox>
+                        <CheckBox Margin="10">virtual</CheckBox>
+                        <CheckBox Margin="10">volatile</CheckBox>
+                        <CheckBox Margin="10">extern</CheckBox>
+                    </WrapPanel>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+        </StackPanel>
     </Grid>
 </Window>
