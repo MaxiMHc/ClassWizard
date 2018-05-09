@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
         Title="Wizard Klas - Dodaj/Edytuj Klasę/Interfejs" Height="485" Width="575" ResizeMode="CanMinimize">
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
