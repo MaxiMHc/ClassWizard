@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="Wizard Klas - Dodaj/Edytuj Klasę/Interfejs" Height="450" Width="550" ResizeMode="CanMinimize">
+        Title="Wizard Klas - Dodaj/Edytuj Klasę/Interfejs" Height="485" Width="575" ResizeMode="CanMinimize">
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -38,7 +38,7 @@
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Typ danych:</Label>
                 <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
-                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
+                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords" VerticalAlignment="Center">
                     <WrapPanel  HorizontalAlignment="Center" Margin="2" VerticalAlignment="Center">
                         <CheckBox Margin="5">internal</CheckBox>
                         <CheckBox Margin="5">abstract</CheckBox>
@@ -59,7 +59,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Grid.Row="0" Grid.Column="0" Margin="5" Padding="0" VerticalAlignment="Center">Dziedziczenie: </CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">Dziedziczenie: </CheckBox>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <GroupBox Grid.Row="1" Grid.ColumnSpan="2">
                     <GroupBox.Header>
