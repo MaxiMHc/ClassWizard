@@ -5,8 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="MethodWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="Wizard Klas - Dodaj/Edytuj Metodę/Konstruktor" Height="480" Width="320" ResizeMode="CanMinimize">
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="Ogólne">
+            <Grid ShowGridLines="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <GroupBox.Header>
+                        <CheckBox>Konstruktor</CheckBox>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="5" Padding="3" Width="73">Nazwa:</Label>
+                        <TextBox Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                    </Grid>
+                </GroupBox>
+                
+                <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
+                <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Zwracany typ:</Label>
+                <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
+                    <WrapPanel  HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center">
+                        <CheckBox Margin="8">static</CheckBox>
+                        <CheckBox Margin="8">override</CheckBox>
+                        <CheckBox Margin="8">const</CheckBox>
+                        <CheckBox Margin="8">extern</CheckBox>
+                        <CheckBox Margin="8">unsafe</CheckBox>
+                        <CheckBox Margin="8">async</CheckBox>
+                        <CheckBox Margin="8">virtual</CheckBox>
+                    </WrapPanel>
+                </GroupBox>
+                <GroupBox Grid.Row="4" Grid.ColumnSpan="2" Header="Argumenty metody">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+
+                        </ListBox>
+                        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                            <Button Margin="3" Padding="2" Width="20">↑</Button>
+                            <Button Margin="3" Padding="2" Width="20">↓</Button>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
+                            <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
+                            <Button Margin="3" Padding="2" Width="80">Usuń</Button>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+        </StackPanel>
     </Grid>
 </Window>
