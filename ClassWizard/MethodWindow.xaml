@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="Wizard Klas - Dodaj/Edytuj Metodę/Konstruktor" Height="480" Width="320" ResizeMode="CanMinimize">
+        Title="Wizard Klas - Dodaj/Edytuj Metodę/Konstruktor" Height="480" Width="320">
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -79,7 +79,7 @@
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Margin="0,0,0,5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
             <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
         </StackPanel>

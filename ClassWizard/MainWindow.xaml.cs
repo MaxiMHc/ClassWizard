@@ -23,6 +23,15 @@ namespace ClassWizard
         public MainWindow()
         {
             InitializeComponent();
+
+            var a = new PropertyWindow();
+            a.Show();
+            var b = new MethodWindow();
+            b.Show();
+            var c = new ClassWindow();
+            c.Show();
+            var d = new ArgumentWindow();
+            d.Show();
         }
     }
 }
