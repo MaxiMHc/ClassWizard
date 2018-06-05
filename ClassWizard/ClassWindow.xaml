@@ -36,7 +36,7 @@
                 </GroupBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Nazwa:</Label>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></TextBox>
-                <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Typ danych:</Label>
+                <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
                 <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords" VerticalAlignment="Center">
                     <WrapPanel  HorizontalAlignment="Center" Margin="2" VerticalAlignment="Center">
