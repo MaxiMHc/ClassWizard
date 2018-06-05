@@ -24,14 +24,75 @@ namespace ClassWizard
         {
             InitializeComponent();
 
-            var a = new PropertyWindow();
-            a.Show();
-            var b = new MethodWindow();
-            b.Show();
-            var c = new ClassWindow();
-            c.Show();
-            var d = new ArgumentWindow();
-            d.Show();
+            List<string> kw = new List<string>();
+            kw.Add("const");
+            //kw.Add("key2");
+            //kw.Add("key3");
+
+            ArgumentObject ao = new ArgumentObject
+            {
+                Name = "Name",
+                Type = "type",
+                Keywords = kw
+            };
+
+            PropertyObject po = new PropertyObject
+            {
+                Name = "Name",
+                Type = "int",
+                AccessModifier = "public",
+                Keywords = kw
+            };
+
+            List<ArgumentObject> aol = new List<ArgumentObject>();
+            aol.Add(ao);
+            aol.Add(ao);
+            aol.Add(ao);
+            aol.Add(ao);
+
+            MethodObject mo = new MethodObject
+            {
+                Name = "Method",
+                AccessModifier = "public",
+                ReturnType = "string",
+                Arguments = aol,
+                Keywords = kw
+            };
+
+            //MessageBox.Show("normal\n" + "\ttabbed\n" + mo.ToFinalString());
+
+            List<MethodObject> mol = new List<MethodObject>();
+            mol.Add(mo);
+            mol.Add(mo);
+            mol.Add(mo);
+            mol.Add(mo);
+
+            List<string> i = new List<string>();
+            i.Add("interface1");
+            i.Add("interface2");
+            i.Add("interface3");
+
+            List<PropertyObject> pol = new List<PropertyObject>();
+            pol.Add(po);
+            pol.Add(po);
+            pol.Add(po);
+
+            ClassObject co = new ClassObject
+            {
+                Name = "KLASA",
+                Keywords = kw,
+                AccessModifier = "public",
+                Inheritance = "INNAKLASA",
+                Interfaces = i,
+                Methods = mol,
+                Properties = pol
+            };
+
+            //MessageBox.Show(co.ToFinalString());
+
+            Preview_TextBox.Text = co.ToFinalString();
+
+            //this.Close();
         }
     }
 }

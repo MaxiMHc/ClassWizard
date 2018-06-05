@@ -57,6 +57,7 @@
     <Compile Include="ArgumentWindow.xaml.cs">
       <DependentUpon>ArgumentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassObject.cs" />
     <Compile Include="ClassWindow.xaml.cs">
       <DependentUpon>ClassWindow.xaml</DependentUpon>
     </Compile>
