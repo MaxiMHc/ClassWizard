@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ClassWizard
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy MethodWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MethodWindow : Window
     {
-        public MainWindow()
+        public MethodWindow()
         {
             InitializeComponent();
-
-            var a = new PropertyWindow();
-            a.Show();
-            var b = new MethodWindow();
-            b.Show();
-            var c = new ClassWindow();
-            c.Show();
-            var d = new ArgumentWindow();
-            d.Show();
         }
     }
 }
