@@ -24,13 +24,13 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Margin="5" Padding="3">Nazwa:</Label>
-                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                <TextBox x:Name="Name" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
-                <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <ComboBox x:Name="AccessModifier" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Typ danych:</Label>
-                <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <ComboBox x:Name="Type" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
-                    <WrapPanel  HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center">
+                    <WrapPanel Name="Keywords" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center">
                         <CheckBox Margin="10">static</CheckBox>
                         <CheckBox Margin="10">final</CheckBox>
                         <CheckBox Margin="10">const</CheckBox>
@@ -42,8 +42,8 @@
             </Grid>
         </GroupBox>
         <StackPanel Margin="0,0,0,5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
-            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+            <Button x:Name="zatwierdz" Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="OK_Click">Zatwierdź</Button>
+            <Button x:Name="Anuluj" Margin="3" Padding="2" Width="80" IsCancel="True" Click="Anuluj_Click">Anuluj</Button>
         </StackPanel>
     </Grid>
 </Window>

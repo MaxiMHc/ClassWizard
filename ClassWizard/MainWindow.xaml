@@ -35,9 +35,9 @@
                 <Button Margin="3" Padding="2" Width="20">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
-                <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
-                <Button Margin="3" Padding="2" Width="80">Usuń</Button>
+                <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>
+                <Button x:Name="Main_Edytuj" Margin="3" Padding="2" Width="80" Click="Edytuj_Click">Edytuj</Button>
+                <Button x:Name="Main_Usun" Margin="3" Padding="2" Width="80" Click="Usun_Click">Usuń</Button>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" ShowGridLines="False">

@@ -94,5 +94,24 @@ namespace ClassWizard
 
             //this.Close();
         }
+
+        private void Dodaj_Click(object sender, RoutedEventArgs e)
+        {
+            ClassWindow _ClassWindow = new ClassWindow();
+            _ClassWindow.Owner = this;
+            _ClassWindow.ShowDialog();
+        }
+
+        private void Usun_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO MATE
+             //Deleted from World Mate
+        }
+
+        private void Edytuj_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO PAL
+            //Edited World Pal
+        }
     }
 }

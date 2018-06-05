@@ -86,9 +86,9 @@
                             <Button Margin="3" Padding="2" Width="20">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
-                            <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
-                            <Button Margin="3" Padding="2" Width="80">Usuń</Button>
+                            <Button x:Name="Class_Inter_Dodaj" Margin="3" Padding="2" Width="80" Click="Inter_Dodaj_Click">Dodaj</Button>
+                            <Button x:Name="Class_Inter_Edytuj" Margin="3" Padding="2" Width="80" Click="Inter_Edytuj_Click">Edytuj</Button>
+                            <Button x:Name="Class_Inter_Usun" Margin="3" Padding="2" Width="80" Click="Inter_Usun_Click">Usuń</Button>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
@@ -104,7 +104,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ListBox Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListBox Name="Class_Pole_List" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
                 </ListBox>
                 <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
@@ -112,9 +112,9 @@
                     <Button Margin="3" Padding="2" Width="20">↓</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
-                    <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
-                    <Button Margin="3" Padding="2" Width="80">Usuń</Button>
+                    <Button x:Name="Class_Pole_Dodaj" Margin="3" Padding="2" Width="80" Click="Pole_Dodaj_Click">Dodaj</Button>
+                    <Button x:Name="Class_Pole_Edytuj" Margin="3" Padding="2" Width="80" Click="Pole_Edytuj_Click">Edytuj</Button>
+                    <Button x:Name="Class_Pole_Usun" Margin="3" Padding="2" Width="80" Click="Pole_Usun_Click">Usuń</Button>
                 </StackPanel>
             </Grid>
         </GroupBox>
@@ -136,9 +136,9 @@
                             <Button Margin="3" Padding="2" Width="20">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
-                            <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
-                            <Button Margin="3" Padding="2" Width="80">Usuń</Button>
+                            <Button x:Name="Class_Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Metoda_Dodaj_Click">Dodaj</Button>
+                            <Button x:Name="Class_Metoda_Edytuj" Margin="3" Padding="2" Width="80" Click="Metoda_Edytuj_Click">Edytuj</Button>
+                            <Button x:Name="Class_Metoda_Usun" Margin="3" Padding="2" Width="80" Click="Metoda_Usun_Click">Usuń</Button>
                         </StackPanel>
                     </Grid>
         </GroupBox>

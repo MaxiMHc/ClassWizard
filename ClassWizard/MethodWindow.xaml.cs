@@ -23,5 +23,22 @@ namespace ClassWizard
         {
             InitializeComponent();
         }
+
+        private void Dodaj_Click(object sender, RoutedEventArgs e)
+        {
+            ArgumentWindow _ArgumentWindow = new ArgumentWindow();
+            _ArgumentWindow.Owner = this;
+            _ArgumentWindow.ShowDialog();
+        }
+
+        private void Edytuj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Usun_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

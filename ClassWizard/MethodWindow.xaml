@@ -34,7 +34,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Margin="5" Padding="3" Width="73">Nazwa:</Label>
-                        <TextBox Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                        <TextBox x:Name="___Brak_nazwy_" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                     </Grid>
                 </GroupBox>
                 
@@ -71,9 +71,9 @@
                             <Button Margin="3" Padding="2" Width="20">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="80">Dodaj</Button>
-                            <Button Margin="3" Padding="2" Width="80">Edytuj</Button>
-                            <Button Margin="3" Padding="2" Width="80">Usuń</Button>
+                            <Button x:Name="Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>
+                            <Button x:Name="Metoda_Edycja" Margin="3" Padding="2" Width="80" Click="Edytuj_Click">Edytuj</Button>
+                            <Button x:Name="Metoda_Usun" Margin="3" Padding="2" Width="80" Click="Usun_Click">Usuń</Button>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
