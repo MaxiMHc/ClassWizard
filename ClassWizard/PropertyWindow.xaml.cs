@@ -31,14 +31,14 @@ namespace ClassWizard
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             pole.Keywords = new List<string>();
-            pole.Name = Name.ToString();
-            pole.AccessModifier = this.AccessModifier.SelectionBoxItem.ToString();
-            pole.Type = Type.SelectionBoxItem.ToString();
+            pole.Name = Name.Text;
+            pole.AccessModifier = this.AccessModifier.SelectedValuePath.ToString();
+            pole.Type = Type.SelectedValuePath.ToString();
             foreach (CheckBox Keyword in Keywords.Children)
             {
                 if (Keyword.IsChecked == true)
                 { 
-                    pole.Keywords.Add(Keyword.ToString());
+                    pole.Keywords.Add(Keyword.Content.ToString());
                 }
             }
             DialogResult = true;

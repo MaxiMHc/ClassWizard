@@ -24,8 +24,8 @@ namespace ClassWizard
         public ClassWindow()
         {
             InitializeComponent();
-            Class_Pole_List.ItemsSource = mainClassObject.Properties;
             mainClassObject.Properties = new List<PropertyObject>();
+            Class_Pole_List.ItemsSource = mainClassObject.Properties;
         }
 
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
