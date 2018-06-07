@@ -16,6 +16,10 @@ namespace ClassWizard
         public List<PropertyObject> Properties { get; set; }
         public List<MethodObject> Methods { get; set; }
 
+        public override string ToString()
+        {
+            return this.AccessModifier + " " + this.Name + " ";
+        }
         public string ToFinalString()
         {
             //string result = String.Format("{0} {1} class {2}", AccessModifier, String.Join(" ", Keywords), Name);

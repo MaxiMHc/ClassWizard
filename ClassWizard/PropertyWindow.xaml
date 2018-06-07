@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Margin="5" Padding="3">Nazwa:</Label>
-                <TextBox x:Name="Name" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                <TextBox Name="_Name" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
                 <ComboBox x:Name="AccessModifier" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Typ danych:</Label>

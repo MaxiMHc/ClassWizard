@@ -20,9 +20,12 @@ namespace ClassWizard
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<ClassObject> Classes { get; private set; }
         public MainWindow()
         {
             InitializeComponent();
+            Classes = new List<ClassObject>();
+            _Class_List.ItemsSource = Classes;
 
             List<string> kw = new List<string>();
             kw.Add("const");
@@ -100,6 +103,12 @@ namespace ClassWizard
             ClassWindow _ClassWindow = new ClassWindow();
             _ClassWindow.Owner = this;
             _ClassWindow.ShowDialog();
+            if(_ClassWindow.DialogResult == true)
+            {
+                Classes.Add(_ClassWindow.MainClassObject);
+                //Dalej wpisac na liste
+            }
+            _Class_List.Items.Refresh();
         }
 
         private void Usun_Click(object sender, RoutedEventArgs e)
@@ -112,6 +121,11 @@ namespace ClassWizard
         {
             //TODO PAL
             //Edited World Pal
+        }
+
+        private void _Class_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
         }
     }
 }

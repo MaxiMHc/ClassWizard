@@ -19,9 +19,11 @@ namespace ClassWizard
     /// </summary>
     public partial class MethodWindow : Window
     {
+        public MethodObject Method { get; private set; }
         public MethodWindow()
         {
             InitializeComponent();
+            Method = new MethodObject();
         }
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
@@ -39,6 +41,15 @@ namespace ClassWizard
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Zatwierdz_Click(object sender, RoutedEventArgs e)
+        {
+            Method.Name = _Name.Text;
+            Method.ReturnType = _Type.Text;
+            Method.AccessModifier = _Access.Text;
+            DialogResult = true;
+            Close();
         }
     }
 }

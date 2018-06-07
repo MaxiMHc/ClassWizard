@@ -34,14 +34,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Margin="5" Padding="3" Width="73">Nazwa:</Label>
-                        <TextBox x:Name="___Brak_nazwy_" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                        <TextBox Name="_Name" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                     </Grid>
                 </GroupBox>
                 
                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
-                <ComboBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <ComboBox Name="_Access" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Zwracany typ:</Label>
-                <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <ComboBox Name="_Type" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
                     <WrapPanel  HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center">
                         <CheckBox Margin="8">static</CheckBox>
@@ -63,7 +63,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ListBox Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox Name="_Arguments" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
                         </ListBox>
                         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
@@ -80,7 +80,7 @@
             </Grid>
         </GroupBox>
         <StackPanel Margin="0,0,0,5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Click">Zatwierdź</Button>
             <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
         </StackPanel>
     </Grid>

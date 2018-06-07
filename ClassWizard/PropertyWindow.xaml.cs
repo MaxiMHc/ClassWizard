@@ -31,7 +31,7 @@ namespace ClassWizard
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             pole.Keywords = new List<string>();
-            pole.Name = Name.Text;
+            pole.Name = _Name.Text;
             pole.AccessModifier = this.AccessModifier.SelectedValuePath.ToString();
             pole.Type = Type.SelectedValuePath.ToString();
             foreach (CheckBox Keyword in Keywords.Children)

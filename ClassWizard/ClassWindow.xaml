@@ -28,18 +28,18 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Grid.Row="0" Grid.ColumnSpan="2">
+                <GroupBox Name="_ClassOrInterface" Grid.Row="0" Grid.ColumnSpan="2">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <RadioButton Margin="3">Klasa</RadioButton>
                         <RadioButton Margin="3">Interfejs</RadioButton>
                     </StackPanel>
                 </GroupBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Nazwa:</Label>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                <TextBox Name="_Name" Grid.Row="1" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Dostępność:</Label>
-                <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
+                <ComboBox Name="_AccessModifier" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords" VerticalAlignment="Center">
-                    <WrapPanel  HorizontalAlignment="Center" Margin="2" VerticalAlignment="Center">
+                    <WrapPanel Name="_KeyWords" HorizontalAlignment="Center" Margin="2" VerticalAlignment="Center">
                         <CheckBox Margin="5">internal</CheckBox>
                         <CheckBox Margin="5">abstract</CheckBox>
                         <CheckBox Margin="5">static</CheckBox>
@@ -59,7 +59,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">Dziedziczenie: </CheckBox>
+                <CheckBox Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">Dziedziczenie:</CheckBox>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <GroupBox Grid.Row="1" Grid.ColumnSpan="2">
                     <GroupBox.Header>
@@ -120,30 +120,30 @@
         </GroupBox>
         <GroupBox Grid.Row="1" Grid.Column="1" Header="Metody i konstruktory klasy">
             <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ListBox Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ListBox Name="_Method_List" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
-                        </ListBox>
-                        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="20">↑</Button>
-                            <Button Margin="3" Padding="2" Width="20">↓</Button>
-                        </StackPanel>
-                        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="Class_Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Metoda_Dodaj_Click">Dodaj</Button>
-                            <Button x:Name="Class_Metoda_Edytuj" Margin="3" Padding="2" Width="80" Click="Metoda_Edytuj_Click">Edytuj</Button>
-                            <Button x:Name="Class_Metoda_Usun" Margin="3" Padding="2" Width="80" Click="Metoda_Usun_Click">Usuń</Button>
-                        </StackPanel>
-                    </Grid>
+                </ListBox>
+                <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                    <Button Margin="3" Padding="2" Width="20">↑</Button>
+                    <Button Margin="3" Padding="2" Width="20">↓</Button>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="Class_Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Metoda_Dodaj_Click">Dodaj</Button>
+                    <Button x:Name="Class_Metoda_Edytuj" Margin="3" Padding="2" Width="80" Click="Metoda_Edytuj_Click">Edytuj</Button>
+                    <Button x:Name="Class_Metoda_Usun" Margin="3" Padding="2" Width="80" Click="Metoda_Usun_Click">Usuń</Button>
+                </StackPanel>
+            </Grid>
         </GroupBox>
         <StackPanel Margin="0,0,0,5" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True">Zatwierdź</Button>
+            <Button Margin="3,3,3,2.8" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Click">Zatwierdź</Button>
             <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
         </StackPanel>
     </Grid>

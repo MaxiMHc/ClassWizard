@@ -27,7 +27,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Klasy i interfejsy do wygenerowania:</Label>
-            <ListBox Grid.Row="1" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListBox Name="_Class_List" Grid.Row="1" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="_Class_List_SelectionChanged">
                 
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
