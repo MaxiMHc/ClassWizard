@@ -22,12 +22,22 @@ namespace ClassWizard
         public ArgumentObject NewArgument { get; private set; }
         public ArgumentWindow()
         {
+            MethodWindow parent = Application.Current.Windows.OfType<MethodWindow>().FirstOrDefault();
             var accessMod = new BasiDataCollection();
-            NewArgument = new ArgumentObject();
+            
             InitializeComponent();
             this._TypeArg.ItemsSource = accessMod.DataTypes;
-            this._TypeArg.SelectedIndex = 0;
-            
+            if (parent._Arguments.SelectedIndex != -1)
+            {
+                NewArgument = parent.Method.Arguments[parent._Arguments.SelectedIndex];
+                this._Name.Text = NewArgument.Name;
+                this._TypeArg.SelectedItem = NewArgument.Type;
+            }
+            else
+            {
+                NewArgument = new ArgumentObject();
+                this._TypeArg.SelectedIndex = 0;
+            }
         }
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)

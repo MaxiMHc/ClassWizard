@@ -101,6 +101,7 @@ namespace ClassWizard
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _Class_List.SelectedIndex = -1;
                 ClassWindow _ClassWindow = new ClassWindow();
              //   _ClassWindow.Owner = this;
                 _ClassWindow.ShowDialog();
@@ -122,10 +123,22 @@ namespace ClassWizard
         {
             //TODO PAL
             //Edited World Pal
+            ClassWindow _ClassWindow = new ClassWindow();
+            //   _ClassWindow.Owner = this;
+            if(_Class_List.SelectedIndex != -1)
+            _ClassWindow.ShowDialog();
+            if (_ClassWindow.DialogResult == true)
+            {
+                Classes[_Class_List.SelectedIndex] = _ClassWindow.MainClassObject;
+                //Dalej wpisac na liste
+            }
+            _Class_List.Items.Refresh();
+            Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
         }
 
         private void _Class_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(_Class_List.SelectedIndex != -1)
             Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
         }
 

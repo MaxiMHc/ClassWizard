@@ -19,20 +19,36 @@ namespace ClassWizard
     /// </summary>
     public partial class MethodWindow : Window
     {
-        public MethodObject Method = new MethodObject();
+        public MethodObject Method { get; set; }
         public MethodWindow()
         {
+            ClassWindow parent = Application.Current.Windows.OfType<ClassWindow>().FirstOrDefault();
             var accessMod = new BasiDataCollection();
             InitializeComponent();
             _Access.ItemsSource = accessMod.Modifiers;
-            _Arguments.ItemsSource = Method.Arguments;
             _Type.ItemsSource = accessMod.DataTypes;
+            if (parent._Method_List.SelectedIndex != -1)
+            {
+                Method = parent.MainClassObject.Methods[parent._Method_List.SelectedIndex];
+                this._Name.Text = Method.Name;
+                _Arguments.ItemsSource = Method.Arguments;
+                _Access.SelectedItem = Method.AccessModifier;
+                _Type.SelectedItem = Method.ReturnType;
+            }
+            else
+            {
+                Method = new MethodObject();
+                _Arguments.ItemsSource = Method.Arguments;
+                _Access.SelectedIndex = 0;
+                _Type.SelectedIndex = 0;
+            }
         }
 
         public MethodObject GetPole { get => Method; }
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _Arguments.SelectedIndex = -1;
             ArgumentWindow _ArgumentWindow = new ArgumentWindow();
             //_ArgumentWindow.Owner = this;
             if(_ArgumentWindow.ShowDialog() == true)
@@ -44,7 +60,16 @@ namespace ClassWizard
 
         private void Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_Arguments.SelectedIndex != -1)
+            {
+                ArgumentWindow _ArgumentWindow = new ArgumentWindow();
+                //_ArgumentWindow.Owner = this;
+                if (_ArgumentWindow.ShowDialog() == true)
+                {
+                    Method.Arguments[_Arguments.SelectedIndex] = _ArgumentWindow.NewArgument;
+                }
+                _Arguments.Items.Refresh();
+            }
         }
 
         private void Usun_Click(object sender, RoutedEventArgs e)
@@ -57,6 +82,7 @@ namespace ClassWizard
             Method.Name = _Name.Text;
             Method.ReturnType = _Type.Text;
             Method.AccessModifier = _Access.Text;
+            Method.ReturnType = _Type.Text; 
             DialogResult = true;
             this.Close();
         }

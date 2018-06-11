@@ -21,25 +21,41 @@ namespace ClassWizard
     public partial class ClassWindow : Window
     {
         public ClassObject MainClassObject { get; private set; }
-       
+        private MainWindow main = ((MainWindow)Application.Current.MainWindow);
+
         public ClassWindow()
         {
 
             var accessMod = new BasiDataCollection();
+
             InitializeComponent();
-            MainClassObject = new ClassObject();
-            MainClassObject.Properties = new List<PropertyObject>();
+
+            if (main._Class_List.SelectedIndex != -1)
+            {
+                MainClassObject = main.Classes[main._Class_List.SelectedIndex];
+                _Name.Text = MainClassObject.Name;
+                _InheritanceCheckBox.IsChecked = true;
+                _InheritanceTextBox.Text = MainClassObject.Inheritance;
+                _AccessModifier.ItemsSource = accessMod.Modifiers;
+                _AccessModifier.SelectedItem = MainClassObject.AccessModifier;
+            }
+            else
+            {
+                MainClassObject = new ClassObject();
+                _AccessModifier.ItemsSource = accessMod.Modifiers;
+                _AccessModifier.SelectedIndex = 0;
+            }
+
             Class_Pole_List.ItemsSource = MainClassObject.Properties;
             _Method_List.ItemsSource = MainClassObject.Methods;
-            _AccessModifier.ItemsSource= accessMod.Modifiers;
-            _AccessModifier.SelectedIndex = 0;
+            
             _ImplementedInterfaces.ItemsSource = MainClassObject.Interfaces;
         }
 
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             PropertyWindow _PropertyWindow = new PropertyWindow();
-           // _PropertyWindow.Owner = this;
+            _PropertyWindow.Owner = this;
             if(_PropertyWindow.ShowDialog() == true)
             {
                 MainClassObject.Properties.Add(_PropertyWindow.GetPole);
@@ -53,7 +69,20 @@ namespace ClassWizard
 
         private void Pole_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Class_Pole_List.SelectedIndex != -1)
+            {
+                PropertyWindow _PropertyWindow = new PropertyWindow();
+               // _PropertyWindow.Owner = this;
+                if (_PropertyWindow.ShowDialog() == true)
+                {
+                    MainClassObject.Properties[Class_Pole_List.SelectedIndex] =_PropertyWindow.GetPole;
+                }
+                else
+                {
+                    // something
+                }
+                Class_Pole_List.Items.Refresh();
+            }
         }
 
         private void Pole_Usun_Click(object sender, RoutedEventArgs e)
@@ -64,6 +93,7 @@ namespace ClassWizard
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             MainClassObject.Interfaces.Add(_InterfaceTextBox.Text);
+            _InheritanceTextBox.Text = "";
             _ImplementedInterfaces.Items.Refresh();
         }
 
@@ -79,6 +109,7 @@ namespace ClassWizard
 
         private void Metoda_Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _Method_List.SelectedIndex = -1;
             MethodWindow _MethodWindow = new MethodWindow();
           //  _MethodWindow.Owner= this;
             if(_MethodWindow.ShowDialog() == true)
@@ -94,7 +125,17 @@ namespace ClassWizard
 
         private void Metoda_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            MethodWindow _MethodWindow = new MethodWindow();
+            //  _MethodWindow.Owner= this;
+            if (_MethodWindow.ShowDialog() == true)
+            {
+                MainClassObject.Methods[_Method_List.SelectedIndex] = _MethodWindow.GetPole;
+            }
+            else
+            {
+                // something
+            }
+            _Method_List.Items.Refresh();
         }
 
         private void Metoda_Usun_Click(object sender, RoutedEventArgs e)

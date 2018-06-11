@@ -9,6 +9,7 @@ namespace ClassWizard
     public class ClassObject
     {
         public string Name { get; set; }
+        public bool Interface { get; set; }
         public string AccessModifier { get; set; }
         public List<string> Keywords { get; set; }
         public string Inheritance { get; set; }
