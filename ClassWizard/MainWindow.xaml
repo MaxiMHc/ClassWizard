@@ -31,8 +31,8 @@
                 
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <Button Margin="3" Padding="2" Width="20">↑</Button>
-                <Button Margin="3" Padding="2" Width="20">↓</Button>
+                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Click="Up_Button_Click">↑</Button>
+                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Click="Down_Button_Click">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>
@@ -45,11 +45,11 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox Name="Preview_TextBox" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
+            <TextBox x:Name="Preview_TextBox" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Margin="0,0,0,12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="3" Padding="2">Generuj kod!</Button>
-                <Button Margin="3" Padding="2">Skopiuj do schowka</Button>
-                <Button Margin="3" Padding="2">Zapisz do pliku</Button>
+                <Button x:Name="Exodia" Margin="3" Padding="2" Click="Exodia_Click">Generuj kod!</Button>
+                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Click="CopyTo_Clipboard_Click">Skopiuj do schowka</Button>
+                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Click="CopyTo_File_Click">Zapisz do pliku</Button>
             </StackPanel>
         </Grid>
     </Grid>
