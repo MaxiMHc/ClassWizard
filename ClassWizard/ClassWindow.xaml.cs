@@ -24,17 +24,16 @@ namespace ClassWizard
        
         public ClassWindow()
         {
-            
-            var access = new List<string>();
-            access.Add("private");
-            access.Add("protected");
-            access.Add("public");
+
+            var accessMod = new BasiDataCollection();
             InitializeComponent();
             MainClassObject = new ClassObject();
             MainClassObject.Properties = new List<PropertyObject>();
             Class_Pole_List.ItemsSource = MainClassObject.Properties;
-            _AccessModifier.ItemsSource= access;
+            _Method_List.ItemsSource = MainClassObject.Methods;
+            _AccessModifier.ItemsSource= accessMod.Modifiers;
             _AccessModifier.SelectedIndex = 0;
+            _ImplementedInterfaces.ItemsSource = MainClassObject.Interfaces;
         }
 
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
@@ -64,7 +63,8 @@ namespace ClassWizard
 
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            
+            MainClassObject.Interfaces.Add(_InterfaceTextBox.Text);
+            _ImplementedInterfaces.Items.Refresh();
         }
 
         private void Inter_Edytuj_Click(object sender, RoutedEventArgs e)
@@ -83,8 +83,7 @@ namespace ClassWizard
           //  _MethodWindow.Owner= this;
             if(_MethodWindow.ShowDialog() == true)
             {
-                var meth = _MethodWindow.GetPole;
-                MainClassObject.Methods.Add(meth);
+                MainClassObject.Methods.Add(_MethodWindow.GetPole);
             }
             else
             {
@@ -105,11 +104,16 @@ namespace ClassWizard
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_InheritanceCheckBox.IsChecked == true)
+            {
+                MainClassObject.Inheritance = _InheritanceTextBox.Text;
+            }
             MainClassObject.Name = _Name.Text;
             MainClassObject.AccessModifier = _AccessModifier.Text;
             DialogResult = true;
             Close();
         }
+
+       
     }
 }
