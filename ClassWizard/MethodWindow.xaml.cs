@@ -19,12 +19,13 @@ namespace ClassWizard
     /// </summary>
     public partial class MethodWindow : Window
     {
-        public MethodObject Method { get; private set; }
+        public MethodObject Method = new MethodObject();
         public MethodWindow()
         {
             InitializeComponent();
-            Method = new MethodObject();
         }
+
+        public MethodObject GetPole { get => Method; }
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
@@ -43,13 +44,13 @@ namespace ClassWizard
 
         }
 
-        private void Zatwierdz_Click(object sender, RoutedEventArgs e)
+        private void Zatwierdz_Method_Click(object sender, RoutedEventArgs e)
         {
             Method.Name = _Name.Text;
             Method.ReturnType = _Type.Text;
             Method.AccessModifier = _Access.Text;
             DialogResult = true;
-            Close();
+            this.Close();
         }
     }
 }

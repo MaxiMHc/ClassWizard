@@ -100,15 +100,15 @@ namespace ClassWizard
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            ClassWindow _ClassWindow = new ClassWindow();
-            _ClassWindow.Owner = this;
-            _ClassWindow.ShowDialog();
-            if(_ClassWindow.DialogResult == true)
-            {
-                Classes.Add(_ClassWindow.MainClassObject);
-                //Dalej wpisac na liste
-            }
-            _Class_List.Items.Refresh();
+                ClassWindow _ClassWindow = new ClassWindow();
+             //   _ClassWindow.Owner = this;
+                _ClassWindow.ShowDialog();
+                if (_ClassWindow.DialogResult == true)
+                {
+                    Classes.Add(_ClassWindow.MainClassObject);
+                    //Dalej wpisac na liste
+                }
+                _Class_List.Items.Refresh();          
         }
 
         private void Usun_Click(object sender, RoutedEventArgs e)

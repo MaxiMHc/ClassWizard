@@ -25,22 +25,22 @@ namespace ClassWizard
         public ClassWindow()
         {
             
-            var acces = new List<string>();
-            acces.Add("private");
-            acces.Add("protected");
-            acces.Add("public");
+            var access = new List<string>();
+            access.Add("private");
+            access.Add("protected");
+            access.Add("public");
             InitializeComponent();
             MainClassObject = new ClassObject();
             MainClassObject.Properties = new List<PropertyObject>();
             Class_Pole_List.ItemsSource = MainClassObject.Properties;
-            _AccessModifier.ItemsSource= acces;
+            _AccessModifier.ItemsSource= access;
             _AccessModifier.SelectedIndex = 0;
         }
 
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             PropertyWindow _PropertyWindow = new PropertyWindow();
-            _PropertyWindow.Owner = this;
+           // _PropertyWindow.Owner = this;
             if(_PropertyWindow.ShowDialog() == true)
             {
                 MainClassObject.Properties.Add(_PropertyWindow.GetPole);
@@ -80,10 +80,11 @@ namespace ClassWizard
         private void Metoda_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             MethodWindow _MethodWindow = new MethodWindow();
-            _MethodWindow.Owner= this;
+          //  _MethodWindow.Owner= this;
             if(_MethodWindow.ShowDialog() == true)
             {
-                //MainClassObject.Methods.Add(_MethodWindow.Method);
+                var meth = _MethodWindow.GetPole;
+                MainClassObject.Methods.Add(meth);
             }
             else
             {

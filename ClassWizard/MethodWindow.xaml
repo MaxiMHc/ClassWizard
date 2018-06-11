@@ -80,7 +80,7 @@
             </Grid>
         </GroupBox>
         <StackPanel Margin="0,0,0,5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Click">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Method_Click">Zatwierdź</Button>
             <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
         </StackPanel>
     </Grid>

@@ -16,6 +16,14 @@ namespace ClassWizard
         public List<PropertyObject> Properties { get; set; }
         public List<MethodObject> Methods { get; set; }
 
+        public ClassObject()
+        {
+            Keywords = new List<string>();
+            Interfaces = new List<string>();
+            Properties = new List<PropertyObject>();
+            Methods = new List<MethodObject>();
+        }
+
         public override string ToString()
         {
             return this.AccessModifier + " " + this.Name + " ";
@@ -86,6 +94,12 @@ namespace ClassWizard
         public List<string> Keywords { get; set; }
         public List<ArgumentObject> Arguments { get; set; }
 
+        public MethodObject()
+        {
+            Keywords = new List<string>();
+            Arguments = new List<ArgumentObject>();
+        }
+
         public string ToFinalString()
         {
             //result = String.Format("\t{0} {1} {2} {3} ({4})", AccessModifier, String.Join(" ", Keywords), ReturnType, Name, String.Join(", ", Arguments));
@@ -124,6 +138,10 @@ namespace ClassWizard
         public string Type { get; set; }
         public List<string> Keywords { get; set; }
 
+        public ArgumentObject()
+        {
+            Keywords = new List<string>();
+        }
         public override string ToString()
         {
             if (Keywords == null || !Keywords.Any())
@@ -143,6 +161,10 @@ namespace ClassWizard
         public string Type { get; set; }
         public List<string> Keywords { get; set; }
 
+        public PropertyObject()
+        {
+            Keywords = new List<string>();
+        }
         public override string ToString()
         {
             if (Keywords == null || !Keywords.Any())
