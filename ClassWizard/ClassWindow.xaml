@@ -59,11 +59,11 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">Dziedziczenie:</CheckBox>
-                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
+                <CheckBox Name="_InheritanceCheckBox"  Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">Dziedziczenie:</CheckBox>
+                <TextBox Name="_InheritanceTextBox" Grid.Row="0" Grid.Column="1" Margin="5" Padding="3"></TextBox>
                 <GroupBox Grid.Row="1" Grid.ColumnSpan="2">
                     <GroupBox.Header>
-                        <CheckBox>Implementowanie interfejsów</CheckBox>
+                        <CheckBox Name="_InterfaceCheckBox">Implementowanie interfejsów</CheckBox>
                     </GroupBox.Header>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -77,8 +77,8 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Margin="5,0">Nazwa:</Label>
-                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
-                        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <TextBox Name="_InterfaceTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
+                        <ListBox Name="_ImplementedInterfaces" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
                         </ListBox>
                         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">

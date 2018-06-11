@@ -19,9 +19,30 @@ namespace ClassWizard
     /// </summary>
     public partial class ArgumentWindow : Window
     {
+        public ArgumentObject NewArgument { get; private set; }
         public ArgumentWindow()
         {
+            var accessMod = new BasiDataCollection();
+            NewArgument = new ArgumentObject();
             InitializeComponent();
+            this._TypeArg.ItemsSource = accessMod.DataTypes;
+            this._TypeArg.SelectedIndex = 0;
+            
+        }
+
+        private void Zatwierdz_Click(object sender, RoutedEventArgs e)
+        {
+            NewArgument.Name = _Name.Text;
+            NewArgument.Type = _TypeArg.Text;
+            foreach (CheckBox Keyword in _Keywords.Children)
+            {
+                if (Keyword.IsChecked == true)
+                {
+                    NewArgument.Keywords.Add(Keyword.Content.ToString());
+                }
+            }
+            DialogResult = true;
+            Close();
         }
     }
 }

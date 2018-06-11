@@ -23,16 +23,21 @@ namespace ClassWizard
 
         public PropertyWindow()
         {
+            var accessMod = new BasiDataCollection();
             InitializeComponent();
+            this.AccessModifier.ItemsSource = accessMod.Modifiers;
+            this.AccessModifier.SelectedIndex = 0;
+            this.Type.ItemsSource = accessMod.DataTypes;
+            this.Type.SelectedIndex = 0;
         }
 
         public PropertyObject GetPole { get => pole; }
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            pole.Keywords = new List<string>();
+            //pole.Keywords = new List<string>();
             pole.Name = _Name.Text;
-            pole.AccessModifier = this.AccessModifier.SelectedValuePath.ToString();
+            pole.AccessModifier = this.AccessModifier.Text;
             pole.Type = Type.SelectedValuePath.ToString();
             foreach (CheckBox Keyword in Keywords.Children)
             {

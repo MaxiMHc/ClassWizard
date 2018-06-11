@@ -121,7 +121,7 @@ namespace ClassWizard
             return result;
         }
 
-        public string ToShortString()
+        public override string ToString()
         {
             if (Keywords == null || !Keywords.Any())
             {
@@ -131,6 +131,33 @@ namespace ClassWizard
             return String.Format("{0} {1} {2} {3}", AccessModifier, String.Join(" ", Keywords), ReturnType, Name);
         }
     }
+
+    public class BasiDataCollection
+    {
+        public List<string> Modifiers { get; private set; }
+        public List<string> DataTypes { get; private set; }
+        public BasiDataCollection()
+        {
+            Modifiers = new List<string>();
+            Modifiers.Add("public");
+            Modifiers.Add("protected");
+            Modifiers.Add("private");
+            DataTypes = new List<string>();
+            DataTypes.Add("int");
+            DataTypes.Add("bool");
+            DataTypes.Add("byte");
+            DataTypes.Add("char");
+            DataTypes.Add("decimal");
+            DataTypes.Add("double");
+            DataTypes.Add("float");
+            DataTypes.Add("long");
+            DataTypes.Add("short");
+            DataTypes.Add("uint");
+            DataTypes.Add("ulong");
+            DataTypes.Add("ushort");
+        }
+    }
+
 
     public class ArgumentObject
     {

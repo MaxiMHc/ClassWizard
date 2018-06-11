@@ -22,7 +22,11 @@ namespace ClassWizard
         public MethodObject Method = new MethodObject();
         public MethodWindow()
         {
+            var accessMod = new BasiDataCollection();
             InitializeComponent();
+            _Access.ItemsSource = accessMod.Modifiers;
+            _Arguments.ItemsSource = Method.Arguments;
+            _Type.ItemsSource = accessMod.DataTypes;
         }
 
         public MethodObject GetPole { get => Method; }
@@ -30,8 +34,12 @@ namespace ClassWizard
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
             ArgumentWindow _ArgumentWindow = new ArgumentWindow();
-            _ArgumentWindow.Owner = this;
-            _ArgumentWindow.ShowDialog();
+            //_ArgumentWindow.Owner = this;
+            if(_ArgumentWindow.ShowDialog() == true)
+            {
+                Method.Arguments.Add(_ArgumentWindow.NewArgument);
+            }
+            _Arguments.Items.Refresh();
         }
 
         private void Edytuj_Click(object sender, RoutedEventArgs e)
