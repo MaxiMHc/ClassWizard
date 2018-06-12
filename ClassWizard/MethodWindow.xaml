@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
         Title="Wizard Klas - Dodaj/Edytuj Metodę/Konstruktor" Height="480" Width="320">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
+        <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
+    </Window.CommandBindings>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -67,8 +71,8 @@
 
                         </ListBox>
                         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="20">↑</Button>
-                            <Button Margin="3" Padding="2" Width="20">↓</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Arguments}">↑</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Arguments}">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>

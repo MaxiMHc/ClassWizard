@@ -151,21 +151,7 @@ namespace ClassWizard
                 Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
         }
 
-        private void Up_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (_Class_List.SelectedIndex > 0)
-                _Class_List.SelectedIndex--;
-            else
-                _Class_List.SelectedIndex = 0;
-        }
-
-        private void Down_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (_Class_List.SelectedIndex < 0)
-                _Class_List.SelectedIndex = 0;
-            else
-                _Class_List.SelectedIndex++;
-        }
+        
         private void PrintCanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             if (_Class_List.SelectedIndex == -1)
@@ -224,6 +210,46 @@ namespace ClassWizard
                 File.WriteAllText(saveFileDialog.FileName, textforClipboard);
             }
         }
+        private void UpCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex > 0)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void UpExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex--;
+            }
+        }
+        private void DownCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex != (Argument_List.Items.Count - 1))
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void DownExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex++;
+            }
+        }
     }
 
     public static class OutputCommand
@@ -268,5 +294,34 @@ namespace ClassWizard
             }
         }
 
+    }
+    public static class Arrow
+    {
+        public static readonly RoutedUICommand Up = new RoutedUICommand
+        (
+            "Up",
+            "Up",
+            typeof(Arrow)
+        );
+        public static RoutedUICommand GoUp
+        {
+            get
+            {
+                return Up;
+            }
+        }
+        public static readonly RoutedUICommand Down = new RoutedUICommand
+        (
+            "Down",
+            "Down",
+            typeof(Arrow)
+        );
+        public static RoutedUICommand GoDown
+        {
+            get
+            {
+                return Down;
+            }
+        }
     }
 }

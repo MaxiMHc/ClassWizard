@@ -167,6 +167,47 @@ namespace ClassWizard
             Close();
         }
 
-       
+        private void UpCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex > 0)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void UpExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex--;
+            }
+        }
+        private void DownCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex != (Argument_List.Items.Count - 1))
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void DownExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex++;
+            }
+        }
+
+        
     }
 }
