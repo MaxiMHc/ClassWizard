@@ -23,7 +23,7 @@ namespace ClassWizard
         public ArgumentWindow()
         {
             MethodWindow parent = Application.Current.Windows.OfType<MethodWindow>().FirstOrDefault();
-            var accessMod = new BasiDataCollection();
+            var accessMod = new BasicDataCollection();
             
             InitializeComponent();
             this._TypeArg.ItemsSource = accessMod.DataTypes;

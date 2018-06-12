@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
         Title="Wizard Klas - Dodaj/Edytuj Klasę/Interfejs" Height="485" Width="575">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="templates/MethodTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -128,7 +135,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ListBox Name="_Method_List" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListBox Name="_Method_List" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ItemTemplate="{StaticResource MethodTemplate}" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
                 </ListBox>
                 <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">

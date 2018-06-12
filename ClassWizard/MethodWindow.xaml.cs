@@ -23,7 +23,7 @@ namespace ClassWizard
         public MethodWindow()
         {
             ClassWindow parent = Application.Current.Windows.OfType<ClassWindow>().FirstOrDefault();
-            var accessMod = new BasiDataCollection();
+            var accessMod = new BasicDataCollection();
             InitializeComponent();
             _Access.ItemsSource = accessMod.Modifiers;
             _Type.ItemsSource = accessMod.DataTypes;

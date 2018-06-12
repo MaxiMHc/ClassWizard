@@ -84,6 +84,7 @@ namespace ClassWizard
             ClassObject co = new ClassObject
             {
                 Name = "KLASA",
+                Type = "class",
                 Keywords = kw,
                 AccessModifier = "public",
                 Inheritance = "INNAKLASA",
@@ -95,6 +96,12 @@ namespace ClassWizard
             //MessageBox.Show(co.ToFinalString());
 
             Preview_TextBox.Text = co.ToFinalString();
+
+            Classes.Add(co);
+            Classes.Add(co);
+            Classes.Add(co);
+
+            _Class_List.ItemsSource = Classes;
 
             //this.Close();
         }

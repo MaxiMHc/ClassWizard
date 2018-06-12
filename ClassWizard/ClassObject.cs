@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClassWizard
 {
     public class ClassObject
     {
         public string Name { get; set; }
-        public bool Interface { get; set; }
+        public string Type { get; set; }
         public string AccessModifier { get; set; }
         public List<string> Keywords { get; set; }
         public string Inheritance { get; set; }
@@ -39,7 +41,7 @@ namespace ClassWizard
                 result += " " + String.Join(" ", Keywords);
             }
 
-            result += " " + Name;
+            result += " " + Type + " " + Name + " ";
 
             if (Inheritance != null && Inheritance != "")
             {
@@ -133,11 +135,11 @@ namespace ClassWizard
         }
     }
 
-    public class BasiDataCollection
+    public class BasicDataCollection
     {
         public List<string> Modifiers { get; private set; }
         public List<string> DataTypes { get; private set; }
-        public BasiDataCollection()
+        public BasicDataCollection()
         {
             Modifiers = new List<string>();
             Modifiers.Add("public");

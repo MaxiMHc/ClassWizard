@@ -26,7 +26,7 @@ namespace ClassWizard
         public ClassWindow()
         {
 
-            var accessMod = new BasiDataCollection();
+            var accessMod = new BasicDataCollection();
 
             InitializeComponent();
 
