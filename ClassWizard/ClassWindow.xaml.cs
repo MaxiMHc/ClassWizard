@@ -55,7 +55,7 @@ namespace ClassWizard
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             PropertyWindow _PropertyWindow = new PropertyWindow();
-           // _PropertyWindow.Owner = this;
+            _PropertyWindow.Owner = this;
             if(_PropertyWindow.ShowDialog() == true)
             {
                 MainClassObject.Properties.Add(_PropertyWindow.GetPole);
