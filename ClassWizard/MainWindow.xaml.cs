@@ -122,8 +122,11 @@ namespace ClassWizard
 
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
-            //TODO MATE
-             //Deleted from World Mate
+            if(_Class_List.SelectedIndex!=-1)
+            {
+                Classes.RemoveAt(_Class_List.SelectedIndex);
+            }
+            _Class_List.Items.Refresh();
         }
 
         private void Edytuj_Click(object sender, RoutedEventArgs e)

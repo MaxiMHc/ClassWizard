@@ -74,7 +74,11 @@ namespace ClassWizard
 
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_Arguments.SelectedIndex != -1)
+            {
+                Method.Arguments.RemoveAt(_Arguments.SelectedIndex);
+            }
+            _Arguments.Items.Refresh();
         }
 
         private void Zatwierdz_Method_Click(object sender, RoutedEventArgs e)

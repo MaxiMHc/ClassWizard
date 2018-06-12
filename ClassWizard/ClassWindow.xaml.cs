@@ -87,13 +87,17 @@ namespace ClassWizard
 
         private void Pole_Usun_Click(object sender, RoutedEventArgs e)
         {
-
+            if(Class_Pole_List.SelectedIndex != -1)
+            {
+                MainClassObject.Properties.RemoveAt(Class_Pole_List.SelectedIndex);
+            }
+            Class_Pole_List.Items.Refresh();
         }
 
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)
         {
             MainClassObject.Interfaces.Add(_InterfaceTextBox.Text);
-            _InheritanceTextBox.Text = "";
+            _InterfaceTextBox.Text = "";
             _ImplementedInterfaces.Items.Refresh();
         }
 
@@ -104,7 +108,11 @@ namespace ClassWizard
 
         private void Inter_Usun_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_ImplementedInterfaces.SelectedIndex !=-1)
+            {
+                MainClassObject.Interfaces.RemoveAt(_ImplementedInterfaces.SelectedIndex);
+            }
+            _ImplementedInterfaces.Items.Refresh();
         }
 
         private void Metoda_Dodaj_Click(object sender, RoutedEventArgs e)
@@ -140,7 +148,11 @@ namespace ClassWizard
 
         private void Metoda_Usun_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_Method_List.SelectedIndex !=-1)
+            {
+                MainClassObject.Methods.RemoveAt(_Method_List.SelectedIndex);
+            }
+            _Method_List.Items.Refresh();
         }
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
