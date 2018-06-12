@@ -34,6 +34,16 @@ namespace ClassWizard
                 _Arguments.ItemsSource = Method.Arguments;
                 _Access.SelectedItem = Method.AccessModifier;
                 _Type.SelectedItem = Method.ReturnType;
+                foreach (string keyword in Method.Keywords)
+                {
+                    foreach (CheckBox chk in _KeyWord.Children)
+                    {
+                        if (keyword == chk.Content.ToString())
+                        {
+                            chk.IsChecked = true;
+                        }
+                    }
+                }
             }
             else
             {
@@ -86,7 +96,15 @@ namespace ClassWizard
             Method.Name = _Name.Text;
             Method.ReturnType = _Type.Text;
             Method.AccessModifier = _Access.Text;
-            Method.ReturnType = _Type.Text; 
+            Method.ReturnType = _Type.Text;
+            Method.Keywords = new List<string>();
+            foreach (CheckBox keyword in _KeyWord.Children)
+            {
+                if (keyword.IsChecked == true)
+                {
+                    Method.Keywords.Add(keyword.Content.ToString());
+                }
+            }
             DialogResult = true;
             this.Close();
         }

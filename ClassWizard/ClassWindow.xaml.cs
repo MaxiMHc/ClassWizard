@@ -38,6 +38,16 @@ namespace ClassWizard
                 _InheritanceTextBox.Text = MainClassObject.Inheritance;
                 _AccessModifier.ItemsSource = accessMod.Modifiers;
                 _AccessModifier.SelectedItem = MainClassObject.AccessModifier;
+                foreach(string keyword in MainClassObject.Keywords)
+                {
+                    foreach(CheckBox chk in _KeyWords.Children)
+                    {
+                        if(keyword == chk.Content.ToString())
+                        {
+                            chk.IsChecked = true;
+                        }
+                    }
+                }
             }
             else
             {
@@ -96,6 +106,7 @@ namespace ClassWizard
 
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _ImplementedInterfaces.SelectedIndex = -1;
             MainClassObject.Interfaces.Add(_InterfaceTextBox.Text);
             _InterfaceTextBox.Text = "";
             _ImplementedInterfaces.Items.Refresh();
@@ -103,7 +114,11 @@ namespace ClassWizard
 
         private void Inter_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_ImplementedInterfaces.SelectedIndex !=-1)
+            {
+                MainClassObject.Interfaces[_ImplementedInterfaces.SelectedIndex] = _InterfaceTextBox.Text;
+            }
+            _ImplementedInterfaces.Items.Refresh();
         }
 
         private void Inter_Usun_Click(object sender, RoutedEventArgs e)
@@ -163,10 +178,22 @@ namespace ClassWizard
             }
             MainClassObject.Name = _Name.Text;
             MainClassObject.AccessModifier = _AccessModifier.Text;
+            MainClassObject.Keywords = new List<string>();
+            foreach(CheckBox keyword in _KeyWords.Children)
+            {
+                if(keyword.IsChecked == true)
+                {
+                    MainClassObject.Keywords.Add(keyword.Content.ToString());
+                }
+            }
             DialogResult = true;
             Close();
         }
 
-       
+        private void _ImplementedInterfaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(_ImplementedInterfaces.SelectedIndex != -1)
+            _InterfaceTextBox.Text = MainClassObject.Interfaces[_ImplementedInterfaces.SelectedIndex];
+        }
     }
 }

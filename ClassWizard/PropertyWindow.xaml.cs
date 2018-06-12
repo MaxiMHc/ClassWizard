@@ -35,6 +35,16 @@ namespace ClassWizard
                 this._Name.Text = pole.Name;
                 this.AccessModifier.SelectedItem = pole.AccessModifier;
                 this.Type.SelectedItem = pole.Type;
+               foreach (string keyword in pole.Keywords)
+               {
+                    foreach (CheckBox chk in Keywords.Children)
+                    {
+                        if (keyword == chk.Content.ToString())
+                        {
+                            chk.IsChecked = true;
+                        }
+                    }
+                }
             }
             else
             {
@@ -54,6 +64,7 @@ namespace ClassWizard
             pole.Name = _Name.Text;
             pole.AccessModifier = this.AccessModifier.Text;
             pole.Type = Type.Text;
+            pole.Keywords = new List<string>();
             foreach (CheckBox Keyword in Keywords.Children)
             {
                 if (Keyword.IsChecked == true)

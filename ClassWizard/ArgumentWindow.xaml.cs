@@ -32,6 +32,16 @@ namespace ClassWizard
                 NewArgument = parent.Method.Arguments[parent._Arguments.SelectedIndex];
                 this._Name.Text = NewArgument.Name;
                 this._TypeArg.SelectedItem = NewArgument.Type;
+                foreach (string keyword in NewArgument.Keywords)
+                {
+                    foreach (CheckBox chk in _Keywords.Children)
+                    {
+                        if (keyword == chk.Content.ToString())
+                        {
+                            chk.IsChecked = true;
+                        }
+                    }
+                }
             }
             else
             {
@@ -44,6 +54,7 @@ namespace ClassWizard
         {
             NewArgument.Name = _Name.Text;
             NewArgument.Type = _TypeArg.Text;
+            NewArgument.Keywords = new List<string>();
             foreach (CheckBox Keyword in _Keywords.Children)
             {
                 if (Keyword.IsChecked == true)
