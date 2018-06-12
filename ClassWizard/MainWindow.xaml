@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="Wizard Klas" Height="425" Width="310">
+        Title="Wizard Klas" Height="800" Width="600" Cursor="graphics/cursor.cur" ForceCursor="True" Icon="graphics/wizardcap.png">
     <!--ResizeMode="CanMinimize">-->
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="templates/ClassTemplate.xaml"/>
+                <ResourceDictionary Source="graphics/bolt.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="Storyboard1">
                 <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.GradientOrigin)" Storyboard.TargetName="Main_Dodaj">
@@ -47,9 +48,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
+        <Menu Grid.Row="0" Background="#FF3E3EFF" Panel.ZIndex="1">
             <MenuItem Header="O programie..." Margin="2" Padding="2"/>
         </Menu>
+        <Image Source="{StaticResource Bolt}" Height="auto" Grid.RowSpan="3" Opacity="0.3"/>
         <Grid Grid.Row="1" ShowGridLines="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -61,12 +63,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Klasy i interfejsy do wygenerowania:</Label>
-            <ListBox Name="_Class_List" Grid.Row="1" Grid.Column="0" Margin="10" Padding="3" ItemTemplate="{StaticResource ClassTemplate}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="_Class_List_SelectionChanged">
+            <ListBox Name="_Class_List" Grid.Row="1" Grid.Column="0" Margin="10" Padding="3" Background="Transparent" ItemTemplate="{StaticResource ClassTemplate}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="_Class_List_SelectionChanged">
 
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Click="Up_Button_Click">↑</Button>
-                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Click="Down_Button_Click">↓</Button>
+                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Click="Up_Button_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">↑</Button>
+                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Click="Down_Button_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">
@@ -86,7 +88,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="Preview_TextBox" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
+            <TextBox x:Name="Preview_TextBox" Background="Transparent" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Margin="0,0,0,12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Exodia" Margin="3" Padding="2" Click="Exodia_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Generuj kod!</Button>
                 <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Click="CopyTo_Clipboard_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Skopiuj do schowka</Button>

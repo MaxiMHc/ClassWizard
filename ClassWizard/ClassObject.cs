@@ -21,6 +21,7 @@ namespace ClassWizard
 
         public ClassObject()
         {
+            Type = "class";
             Keywords = new List<string>();
             Interfaces = new List<string>();
             Properties = new List<PropertyObject>();

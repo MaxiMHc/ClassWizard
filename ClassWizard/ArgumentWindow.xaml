@@ -5,12 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="Wizard Klas - Dodaj/Edytuj Argument" Height="250" Width="300" ResizeMode="CanMinimize">
+        Title="Wizard Klas - Dodaj/Edytuj Argument" Height="250" Width="300" ResizeMode="CanMinimize" Cursor="graphics/cursor.cur" ForceCursor="True" Icon="graphics/wizardcap.png">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="graphics/bolt.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="Storyboard1">
+                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.GradientOrigin)" Storyboard.TargetName="Confirm_Button">
+                    <EasingPointKeyFrame KeyTime="0" Value="-1.331,6.656"/>
+                    <EasingPointKeyFrame KeyTime="0:0:3" Value="-1.832,6.221"/>
+                </PointAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.RadiusX)" Storyboard.TargetName="Confirm_Button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="3.917"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="3.626"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.RadiusY)" Storyboard.TargetName="Confirm_Button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.886"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.82"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Confirm_Button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.778"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Confirm_Button">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Image Source="{StaticResource Bolt}" Height="auto" Grid.RowSpan="3" Opacity="0.3"/>
         <GroupBox Grid.Row="0" Header="Ogólne">
             <Grid ShowGridLines="False">
                 <Grid.RowDefinitions>
@@ -38,8 +73,14 @@
             </Grid>
         </GroupBox>
         <StackPanel Margin="0,0,0,5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="3,3,3,2.8" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Click">Zatwierdź</Button>
-            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+            <Button Name="Confirm_Button" Margin="3,3,3,2.8" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Click">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </RadialGradientBrush>
+                </Button.Background> Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" IsCancel="True" Background="{Binding ElementName=Confirm_Button, Path=Background}">Anuluj</Button>
         </StackPanel>
     </Grid>
 </Window>
