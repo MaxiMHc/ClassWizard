@@ -47,7 +47,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Zwracany typ:</Label>
                 <ComboBox Name="_Type" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
-                    <WrapPanel  HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center">
+                    <WrapPanel Name="_KeyWord"  HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center">
                         <CheckBox Margin="8">static</CheckBox>
                         <CheckBox Margin="8">override</CheckBox>
                         <CheckBox Margin="8">const</CheckBox>

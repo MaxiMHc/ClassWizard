@@ -89,7 +89,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Margin="5,0">Nazwa:</Label>
                         <TextBox Name="_InterfaceTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
-                        <ListBox Name="_ImplementedInterfaces" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox Name="_ImplementedInterfaces" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="_ImplementedInterfaces_SelectionChanged">
 
                         </ListBox>
                         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
