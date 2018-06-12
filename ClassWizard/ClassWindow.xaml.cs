@@ -21,7 +21,9 @@ namespace ClassWizard
     public partial class ClassWindow : Window
     {
         public ClassObject MainClassObject { get; private set; }
-       
+        List<MethodObject> moll;
+
+
         public ClassWindow()
         {
             
@@ -35,6 +37,59 @@ namespace ClassWizard
             Class_Pole_List.ItemsSource = MainClassObject.Properties;
             _AccessModifier.ItemsSource= access;
             _AccessModifier.SelectedIndex = 0;
+
+            List<string> kw = new List<string>();
+            kw.Add("const");
+            //kw.Add("key2");
+            //kw.Add("key3");
+
+            ArgumentObject ao = new ArgumentObject
+            {
+                Name = "Name",
+                Type = "type",
+                Keywords = kw
+            };
+
+            PropertyObject po = new PropertyObject
+            {
+                Name = "Name",
+                Type = "int",
+                AccessModifier = "public",
+                Keywords = kw
+            };
+
+            List<ArgumentObject> aol = new List<ArgumentObject>();
+            //aol.Add(ao);
+            //aol.Add(ao);
+            //aol.Add(ao);
+            //aol.Add(ao);
+
+            MethodObject mo = new MethodObject
+            {
+                Name = "Method",
+                AccessModifier = "public",
+                ReturnType = "string",
+                Arguments = aol,
+                Keywords = kw
+            };
+
+            //MessageBox.Show("normal\n" + "\ttabbed\n" + mo.ToFinalString());
+
+            List<MethodObject> mol = new List<MethodObject>();
+            mol.Add(mo);
+            mol.Add(mo);
+            mol.Add(mo);
+            mol.Add(mo);
+            moll = mol;
+
+            _Method_List.ItemsSource = mol;
+
+            List<PropertyObject> pol = new List<PropertyObject>();
+            pol.Add(po);
+            pol.Add(po);
+            pol.Add(po);
+
+            Class_Pole_List.ItemsSource = pol;
         }
 
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
@@ -54,12 +109,12 @@ namespace ClassWizard
 
         private void Pole_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            _Method_List.ItemsSource = null;
         }
 
         private void Pole_Usun_Click(object sender, RoutedEventArgs e)
         {
-
+            _Method_List.ItemsSource = moll;
         }
 
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)

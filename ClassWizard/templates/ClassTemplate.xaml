@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ClassWizard">
+
+    <local:InheritanceAndInterfacesConverter x:Key="InheritanceAndInterfacesConverter"/>
+    
+    <DataTemplate x:Key="ClassTemplate">
+        <WrapPanel>
+            <TextBlock Text="{Binding Path=Type}"/>
+            <TextBlock Text=" "/>
+            <TextBlock Text="{Binding Path=Name}"/>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource InheritanceAndInterfacesConverter}">
+                        <Binding Path="Inheritance"/>
+                        <Binding Path="Interfaces"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </WrapPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

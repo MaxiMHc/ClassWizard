@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClassWizard
 {
     public class ClassObject
     {
         public string Name { get; set; }
+        public string Type { get; set; }
         public string AccessModifier { get; set; }
         public List<string> Keywords { get; set; }
         public string Inheritance { get; set; }
@@ -38,7 +41,7 @@ namespace ClassWizard
                 result += " " + String.Join(" ", Keywords);
             }
 
-            result += " " + Name;
+            result += " " + Type + " " + Name + " ";
 
             if (Inheritance != null && Inheritance != "")
             {
@@ -92,7 +95,8 @@ namespace ClassWizard
         public string AccessModifier { get; set; }
         public string ReturnType { get; set; }
         public List<string> Keywords { get; set; }
-        public List<ArgumentObject> Arguments { get; set; }
+        private List<ArgumentObject> arguments;
+        public List<ArgumentObject> Arguments { get { return arguments; } set { arguments = value; } }
 
         public MethodObject()
         {

@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ClassWizard">
+
+    <local:CountArgumentsConverter x:Key="CountArgumentsConverter"/>
+    <local:KeywordsConverter x:Key="KeywordsConverter"/>
+    
+    <DataTemplate x:Key="MethodTemplate">
+        <WrapPanel>
+            <TextBlock Text="{Binding Path=AccessModifier}"/>
+            <TextBlock Text=" "/>
+            <TextBlock Text="{Binding Path=Keywords, Converter={StaticResource KeywordsConverter}}"/>
+            <TextBlock Text="{Binding Path=Name}"/>
+            <TextBlock Text="("/>
+            <TextBlock Text="{Binding Path=Arguments, Converter={StaticResource CountArgumentsConverter}}"/>
+            <TextBlock Text=")"/>
+        </WrapPanel>
+    </DataTemplate>
+
+</ResourceDictionary>
