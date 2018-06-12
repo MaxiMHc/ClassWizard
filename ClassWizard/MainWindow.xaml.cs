@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -109,20 +110,20 @@ namespace ClassWizard
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
             _Class_List.SelectedIndex = -1;
-                ClassWindow _ClassWindow = new ClassWindow();
-             //   _ClassWindow.Owner = this;
-                _ClassWindow.ShowDialog();
-                if (_ClassWindow.DialogResult == true)
-                {
-                    Classes.Add(_ClassWindow.MainClassObject);
-                    //Dalej wpisac na liste
-                }
-                _Class_List.Items.Refresh();          
+            ClassWindow _ClassWindow = new ClassWindow();
+            //   _ClassWindow.Owner = this;
+            _ClassWindow.ShowDialog();
+            if (_ClassWindow.DialogResult == true)
+            {
+                Classes.Add(_ClassWindow.MainClassObject);
+                //Dalej wpisac na liste
+            }
+            _Class_List.Items.Refresh();
         }
 
         private void Usun_Click(object sender, RoutedEventArgs e)
         {
-            if(_Class_List.SelectedIndex!=-1)
+            if (_Class_List.SelectedIndex != -1)
             {
                 Classes.RemoveAt(_Class_List.SelectedIndex);
             }
@@ -131,12 +132,10 @@ namespace ClassWizard
 
         private void Edytuj_Click(object sender, RoutedEventArgs e)
         {
-            //TODO PAL
-            //Edited World Pal
             ClassWindow _ClassWindow = new ClassWindow();
             //   _ClassWindow.Owner = this;
-            if(_Class_List.SelectedIndex != -1)
-            _ClassWindow.ShowDialog();
+            if (_Class_List.SelectedIndex != -1)
+                _ClassWindow.ShowDialog();
             if (_ClassWindow.DialogResult == true)
             {
                 Classes[_Class_List.SelectedIndex] = _ClassWindow.MainClassObject;
@@ -148,37 +147,8 @@ namespace ClassWizard
 
         private void _Class_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(_Class_List.SelectedIndex != -1)
-            Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
-        }
-
-        private void CopyTo_Clipboard_Click(object sender, RoutedEventArgs e)
-        {
-            string textforClipboard = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
-            Clipboard.Clear();
-            Clipboard.SetText(textforClipboard);
-        }
-
-        private void CopyTo_File_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog.Title = "Save as";
-            if (_Class_List.SelectedItem != null)
-                saveFileDialog.FileName = Classes[_Class_List.SelectedIndex].Name;
-            else
-                saveFileDialog.FileName = "Your_Class";
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                string textforClipboard = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
-                File.WriteAllText(saveFileDialog.FileName, textforClipboard);
-            }
-        }
-
-        private void Exodia_Click(object sender, RoutedEventArgs e)
-        {
-            
+            if (_Class_List.SelectedIndex != -1)
+                Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
         }
 
         private void Up_Button_Click(object sender, RoutedEventArgs e)
@@ -196,5 +166,107 @@ namespace ClassWizard
             else
                 _Class_List.SelectedIndex++;
         }
+        private void PrintCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (_Class_List.SelectedIndex == -1)
+                e.CanExecute = false;
+            else
+                e.CanExecute = true;
+        }
+
+        private void PrintExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            TextBlock Class_Text = new TextBlock();
+            Class_Text.Measure(new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
+            Class_Text.Arrange(new Rect(new Point(50,50),new Point(printDialog.PrintableAreaWidth, printDialog.PrintableAreaWidth)));
+            if (printDialog.ShowDialog().GetValueOrDefault())
+            {
+                printDialog.PrintVisual(Class_Text, "Printing Class");
+
+            }
+        }
+        private void CopyCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (_Class_List.SelectedIndex == -1)
+                e.CanExecute = false;
+            else
+                e.CanExecute = true;
+        }
+
+        private void CopyExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string textforClipboard = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
+            Clipboard.Clear();
+            Clipboard.SetText(textforClipboard);
+        }
+        private void SaveCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (_Class_List.SelectedIndex == -1)
+                e.CanExecute = false;
+            else
+                e.CanExecute = true;
+        }
+
+        private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog.Title = "Save as";
+            if (_Class_List.SelectedItem != null)
+                saveFileDialog.FileName = Classes[_Class_List.SelectedIndex].Name;
+            else
+                saveFileDialog.FileName = "Your_Class";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string textforClipboard = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
+                File.WriteAllText(saveFileDialog.FileName, textforClipboard);
+            }
+        }
+    }
+
+    public static class OutputCommand
+    {
+        public static readonly RoutedUICommand Print = new RoutedUICommand
+        (
+            "Print",
+            "Print",
+            typeof(OutputCommand)
+        );
+        public static RoutedUICommand Print_Init
+        {
+            get
+            {
+                return Print;
+            }
+        }
+        public static readonly RoutedUICommand Copy = new RoutedUICommand
+        (
+            "Copy",
+            "Copy",
+            typeof(OutputCommand)
+        );
+        public static RoutedUICommand Copy_Init
+        {
+            get
+            {
+                return Copy;
+            }
+        }
+        public static readonly RoutedUICommand Save = new RoutedUICommand
+        (
+            "Save",
+            "Save",
+            typeof(OutputCommand)
+        );
+        public static RoutedUICommand Save_Init
+        {
+            get
+            {
+                return Save;
+            }
+        }
+
     }
 }

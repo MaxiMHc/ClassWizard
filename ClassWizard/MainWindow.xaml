@@ -14,6 +14,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:OutputCommand.Print_Init" CanExecute="PrintCanExecute" Executed="PrintExecuted" />
+        <CommandBinding Command="local:OutputCommand.Copy_Init" CanExecute="CopyCanExecute" Executed="CopyExecuted" />
+        <CommandBinding Command="local:OutputCommand.Save_Init" CanExecute="SaveCanExecute" Executed="SaveExecuted" />
+    </Window.CommandBindings>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -54,9 +59,9 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="Preview_TextBox" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Margin="0,0,0,12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Exodia" Margin="3" Padding="2" Click="Exodia_Click">Generuj kod!</Button>
-                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Click="CopyTo_Clipboard_Click">Skopiuj do schowka</Button>
-                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Click="CopyTo_File_Click">Zapisz do pliku</Button>
+                <Button x:Name="Exodia" Margin="3" Padding="2" Command="local:OutputCommand.Print_Init">Drukuj</Button>
+                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Command="local:OutputCommand.Copy_Init">Skopiuj do schowka</Button>
+                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Command="local:OutputCommand.Save_Init">Zapisz do pliku</Button>
             </StackPanel>
         </Grid>
     </Grid>
