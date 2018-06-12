@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace ClassWizard
 {
     /// <summary>
@@ -107,6 +108,7 @@ namespace ClassWizard
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _Class_List.SelectedIndex = -1;
                 ClassWindow _ClassWindow = new ClassWindow();
              //   _ClassWindow.Owner = this;
                 _ClassWindow.ShowDialog();
@@ -128,11 +130,68 @@ namespace ClassWizard
         {
             //TODO PAL
             //Edited World Pal
+            ClassWindow _ClassWindow = new ClassWindow();
+            //   _ClassWindow.Owner = this;
+            if(_Class_List.SelectedIndex != -1)
+            _ClassWindow.ShowDialog();
+            if (_ClassWindow.DialogResult == true)
+            {
+                Classes[_Class_List.SelectedIndex] = _ClassWindow.MainClassObject;
+                //Dalej wpisac na liste
+            }
+            _Class_List.Items.Refresh();
+            Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
         }
 
         private void _Class_List_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(_Class_List.SelectedIndex != -1)
             Preview_TextBox.Text = Classes[_Class_List.SelectedIndex].ToFinalString();
+        }
+
+        private void CopyTo_Clipboard_Click(object sender, RoutedEventArgs e)
+        {
+            string textforClipboard = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
+            Clipboard.Clear();
+            Clipboard.SetText(textforClipboard);
+        }
+
+        private void CopyTo_File_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog.Title = "Save as";
+            if (_Class_List.SelectedItem != null)
+                saveFileDialog.FileName = Classes[_Class_List.SelectedIndex].Name;
+            else
+                saveFileDialog.FileName = "Your_Class";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string textforClipboard = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
+                File.WriteAllText(saveFileDialog.FileName, textforClipboard);
+            }
+        }
+
+        private void Exodia_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Up_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_Class_List.SelectedIndex > 0)
+                _Class_List.SelectedIndex--;
+            else
+                _Class_List.SelectedIndex = 0;
+        }
+
+        private void Down_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_Class_List.SelectedIndex < 0)
+                _Class_List.SelectedIndex = 0;
+            else
+                _Class_List.SelectedIndex++;
         }
     }
 }

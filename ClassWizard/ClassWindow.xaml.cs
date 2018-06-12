@@ -21,75 +21,35 @@ namespace ClassWizard
     public partial class ClassWindow : Window
     {
         public ClassObject MainClassObject { get; private set; }
-        List<MethodObject> moll;
-
+        private MainWindow main = ((MainWindow)Application.Current.MainWindow);
 
         public ClassWindow()
         {
-            
-            var access = new List<string>();
-            access.Add("private");
-            access.Add("protected");
-            access.Add("public");
+
+            var accessMod = new BasiDataCollection();
+
             InitializeComponent();
-            MainClassObject = new ClassObject();
-            MainClassObject.Properties = new List<PropertyObject>();
+
+            if (main._Class_List.SelectedIndex != -1)
+            {
+                MainClassObject = main.Classes[main._Class_List.SelectedIndex];
+                _Name.Text = MainClassObject.Name;
+                _InheritanceCheckBox.IsChecked = true;
+                _InheritanceTextBox.Text = MainClassObject.Inheritance;
+                _AccessModifier.ItemsSource = accessMod.Modifiers;
+                _AccessModifier.SelectedItem = MainClassObject.AccessModifier;
+            }
+            else
+            {
+                MainClassObject = new ClassObject();
+                _AccessModifier.ItemsSource = accessMod.Modifiers;
+                _AccessModifier.SelectedIndex = 0;
+            }
+
             Class_Pole_List.ItemsSource = MainClassObject.Properties;
-            _AccessModifier.ItemsSource= access;
-            _AccessModifier.SelectedIndex = 0;
-
-            //List<string> kw = new List<string>();
-            //kw.Add("const");
-            ////kw.Add("key2");
-            ////kw.Add("key3");
-
-            //ArgumentObject ao = new ArgumentObject
-            //{
-            //    Name = "Name",
-            //    Type = "type",
-            //    Keywords = kw
-            //};
-
-            //PropertyObject po = new PropertyObject
-            //{
-            //    Name = "Name",
-            //    Type = "int",
-            //    AccessModifier = "public",
-            //    Keywords = kw
-            //};
-
-            //List<ArgumentObject> aol = new List<ArgumentObject>();
-            ////aol.Add(ao);
-            ////aol.Add(ao);
-            ////aol.Add(ao);
-            ////aol.Add(ao);
-
-            //MethodObject mo = new MethodObject
-            //{
-            //    Name = "Method",
-            //    AccessModifier = "public",
-            //    ReturnType = "string",
-            //    Arguments = aol,
-            //    Keywords = kw
-            //};
-
-            ////MessageBox.Show("normal\n" + "\ttabbed\n" + mo.ToFinalString());
-
-            //List<MethodObject> mol = new List<MethodObject>();
-            //mol.Add(mo);
-            //mol.Add(mo);
-            //mol.Add(mo);
-            //mol.Add(mo);
-            //moll = mol;
-
-            //_Method_List.ItemsSource = mol;
-
-            //List<PropertyObject> pol = new List<PropertyObject>();
-            //pol.Add(po);
-            //pol.Add(po);
-            //pol.Add(po);
-
-            //Class_Pole_List.ItemsSource = pol;
+            _Method_List.ItemsSource = MainClassObject.Methods;
+            
+            _ImplementedInterfaces.ItemsSource = MainClassObject.Interfaces;
         }
 
         private void Pole_Dodaj_Click(object sender, RoutedEventArgs e)
@@ -109,7 +69,20 @@ namespace ClassWizard
 
         private void Pole_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Class_Pole_List.SelectedIndex != -1)
+            {
+                PropertyWindow _PropertyWindow = new PropertyWindow();
+               // _PropertyWindow.Owner = this;
+                if (_PropertyWindow.ShowDialog() == true)
+                {
+                    MainClassObject.Properties[Class_Pole_List.SelectedIndex] =_PropertyWindow.GetPole;
+                }
+                else
+                {
+                    // something
+                }
+                Class_Pole_List.Items.Refresh();
+            }
         }
 
         private void Pole_Usun_Click(object sender, RoutedEventArgs e)
@@ -119,7 +92,9 @@ namespace ClassWizard
 
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            
+            MainClassObject.Interfaces.Add(_InterfaceTextBox.Text);
+            _InheritanceTextBox.Text = "";
+            _ImplementedInterfaces.Items.Refresh();
         }
 
         private void Inter_Edytuj_Click(object sender, RoutedEventArgs e)
@@ -134,12 +109,12 @@ namespace ClassWizard
 
         private void Metoda_Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _Method_List.SelectedIndex = -1;
             MethodWindow _MethodWindow = new MethodWindow();
           //  _MethodWindow.Owner= this;
             if(_MethodWindow.ShowDialog() == true)
             {
-                var meth = _MethodWindow.GetPole;
-                MainClassObject.Methods.Add(meth);
+                MainClassObject.Methods.Add(_MethodWindow.GetPole);
             }
             else
             {
@@ -150,7 +125,17 @@ namespace ClassWizard
 
         private void Metoda_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            MethodWindow _MethodWindow = new MethodWindow();
+            //  _MethodWindow.Owner= this;
+            if (_MethodWindow.ShowDialog() == true)
+            {
+                MainClassObject.Methods[_Method_List.SelectedIndex] = _MethodWindow.GetPole;
+            }
+            else
+            {
+                // something
+            }
+            _Method_List.Items.Refresh();
         }
 
         private void Metoda_Usun_Click(object sender, RoutedEventArgs e)
@@ -160,11 +145,16 @@ namespace ClassWizard
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_InheritanceCheckBox.IsChecked == true)
+            {
+                MainClassObject.Inheritance = _InheritanceTextBox.Text;
+            }
             MainClassObject.Name = _Name.Text;
             MainClassObject.AccessModifier = _AccessModifier.Text;
             DialogResult = true;
             Close();
         }
+
+       
     }
 }
