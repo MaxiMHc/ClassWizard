@@ -98,7 +98,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ListBox Name="_Arguments" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox Name="_Arguments" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
                         </ListBox>
                         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
