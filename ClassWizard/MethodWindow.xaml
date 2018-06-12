@@ -5,7 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassWizard"
         mc:Ignorable="d"
-        Title="Wizard Klas - Dodaj/Edytuj Metodę/Konstruktor" Height="480" Width="320">
+        Title="Wizard Klas - Dodaj/Edytuj Metodę/Konstruktor" Height="480" Width="320" Cursor="graphics/cursor.cur" ForceCursor="True" Icon="graphics/wizardcap.png">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="graphics/bolt.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="Storyboard1">
+                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.GradientOrigin)" Storyboard.TargetName="Metoda_Dodaj">
+                    <EasingPointKeyFrame KeyTime="0" Value="-1.331,6.656"/>
+                    <EasingPointKeyFrame KeyTime="0:0:3" Value="-1.832,6.221"/>
+                </PointAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.RadiusX)" Storyboard.TargetName="Metoda_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="3.917"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="3.626"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.RadiusY)" Storyboard.TargetName="Metoda_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.886"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.82"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Metoda_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.778"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Metoda_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Window.CommandBindings>
         <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
         <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
@@ -15,6 +49,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Image Source="{StaticResource Bolt}" Height="auto" Grid.RowSpan="3" Opacity="0.3"/>
         <GroupBox Grid.Row="0" Header="Ogólne">
             <Grid ShowGridLines="False">
                 <Grid.RowDefinitions>
@@ -67,25 +102,31 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ListBox Name="_Arguments" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox Name="_Arguments" Grid.Row="0" Grid.Column="0" Margin="10" Padding="3" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
                         </ListBox>
                         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Arguments}">↑</Button>
-                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Arguments}">↓</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Arguments}" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">↑</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Arguments}" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>
-                            <Button x:Name="Metoda_Edycja" Margin="3" Padding="2" Width="80" Click="Edytuj_Click">Edytuj</Button>
-                            <Button x:Name="Metoda_Usun" Margin="3" Padding="2" Width="80" Click="Usun_Click">Usuń</Button>
+                            <Button x:Name="Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">
+                                <Button.Background>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Button.Background> Dodaj</Button>
+                            <Button x:Name="Metoda_Edycja" Margin="3" Padding="2" Width="80" Click="Edytuj_Click" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">Edytuj</Button>
+                            <Button x:Name="Metoda_Usun" Margin="3" Padding="2" Width="80" Click="Usun_Click" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">Usuń</Button>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
             </Grid>
         </GroupBox>
         <StackPanel Margin="0,0,0,5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Method_Click">Zatwierdź</Button>
-            <Button Margin="3" Padding="2" Width="80" IsCancel="True">Anuluj</Button>
+            <Button Margin="3" Padding="2" Width="80" FontWeight="Bold" IsDefault="True" Click="Zatwierdz_Method_Click" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">Zatwierdź</Button>
+            <Button Margin="3" Padding="2" Width="80" IsCancel="True" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">Anuluj</Button>
         </StackPanel>
     </Grid>
 </Window>
