@@ -24,7 +24,7 @@ namespace ClassWizard
         public PropertyWindow()
         {
             ClassWindow parent = Application.Current.Windows.OfType<ClassWindow>().FirstOrDefault();
-            var accessMod = new BasiDataCollection();
+            var accessMod = new BasicDataCollection();
             InitializeComponent();
             this.AccessModifier.ItemsSource = accessMod.Modifiers;
             this.Type.ItemsSource = accessMod.DataTypes;

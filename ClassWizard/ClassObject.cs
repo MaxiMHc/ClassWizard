@@ -139,7 +139,7 @@ namespace ClassWizard
     {
         public List<string> Modifiers { get; private set; }
         public List<string> DataTypes { get; private set; }
-        public BasiDataCollection()
+        public BasicDataCollection()
         {
             Modifiers = new List<string>();
             Modifiers.Add("public");
