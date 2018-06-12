@@ -12,8 +12,35 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="templates/ClassTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="Storyboard1">
+                <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.GradientOrigin)" Storyboard.TargetName="Main_Dodaj">
+                    <EasingPointKeyFrame KeyTime="0" Value="-1.331,6.656"/>
+                    <EasingPointKeyFrame KeyTime="0:0:3" Value="-1.832,6.221"/>
+                </PointAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.RadiusX)" Storyboard.TargetName="Main_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="3.917"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="3.626"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(RadialGradientBrush.RadiusY)" Storyboard.TargetName="Main_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.886"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.82"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="Main_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0.778"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="Main_Dodaj">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -35,16 +62,23 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Klasy i interfejsy do wygenerowania:</Label>
             <ListBox Name="_Class_List" Grid.Row="1" Grid.Column="0" Margin="10" Padding="3" ItemTemplate="{StaticResource ClassTemplate}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="_Class_List_SelectionChanged">
-                
+
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Click="Up_Button_Click">↑</Button>
                 <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Click="Down_Button_Click">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>
-                <Button x:Name="Main_Edytuj" Margin="3" Padding="2" Width="80" Click="Edytuj_Click">Edytuj</Button>
-                <Button x:Name="Main_Usun" Margin="3" Padding="2" Width="80" Click="Usun_Click">Usuń</Button>
+                <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">
+                    <Button.Background>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Button.Background> Dodaj
+                </Button>
+                <Button x:Name="Main_Edytuj" Margin="3" Padding="2" Width="80" Click="Edytuj_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Edytuj</Button>
+                <Button x:Name="Main_Usun" Margin="3" Padding="2" Width="80" Click="Usun_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Usuń</Button>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" ShowGridLines="False">
@@ -54,9 +88,9 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="Preview_TextBox" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Margin="0,0,0,12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Exodia" Margin="3" Padding="2" Click="Exodia_Click">Generuj kod!</Button>
-                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Click="CopyTo_Clipboard_Click">Skopiuj do schowka</Button>
-                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Click="CopyTo_File_Click">Zapisz do pliku</Button>
+                <Button x:Name="Exodia" Margin="3" Padding="2" Click="Exodia_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Generuj kod!</Button>
+                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Click="CopyTo_Clipboard_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Skopiuj do schowka</Button>
+                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Click="CopyTo_File_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Zapisz do pliku</Button>
             </StackPanel>
         </Grid>
     </Grid>
