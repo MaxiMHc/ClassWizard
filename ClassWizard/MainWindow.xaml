@@ -18,6 +18,8 @@
         <CommandBinding Command="local:OutputCommand.Print_Init" CanExecute="PrintCanExecute" Executed="PrintExecuted" />
         <CommandBinding Command="local:OutputCommand.Copy_Init" CanExecute="CopyCanExecute" Executed="CopyExecuted" />
         <CommandBinding Command="local:OutputCommand.Save_Init" CanExecute="SaveCanExecute" Executed="SaveExecuted" />
+        <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
+        <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
     </Window.CommandBindings>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
@@ -43,8 +45,8 @@
                 
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Click="Up_Button_Click">↑</Button>
-                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Click="Down_Button_Click">↓</Button>
+                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Class_List}">↑</Button>
+                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Class_List}">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">Dodaj</Button>

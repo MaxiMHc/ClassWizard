@@ -13,6 +13,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
+        <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
+    </Window.CommandBindings>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -89,8 +93,8 @@
 
                         </ListBox>
                         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="20">↑</Button>
-                            <Button Margin="3" Padding="2" Width="20">↓</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_ImplementedInterfaces}">↑</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_ImplementedInterfaces}">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="Class_Inter_Dodaj" Margin="3" Padding="2" Width="80" Click="Inter_Dodaj_Click">Dodaj</Button>
@@ -115,8 +119,8 @@
 
                 </ListBox>
                 <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                    <Button Margin="3" Padding="2" Width="20">↑</Button>
-                    <Button Margin="3" Padding="2" Width="20">↓</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=Class_Pole_List}">↑</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=Class_Pole_List}">↓</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="Class_Pole_Dodaj" Margin="3" Padding="2" Width="80" Click="Pole_Dodaj_Click">Dodaj</Button>
@@ -139,8 +143,8 @@
 
                 </ListBox>
                 <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                    <Button Margin="3" Padding="2" Width="20">↑</Button>
-                    <Button Margin="3" Padding="2" Width="20">↓</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Method_List}">↑</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Method_List}">↓</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="Class_Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Metoda_Dodaj_Click">Dodaj</Button>
