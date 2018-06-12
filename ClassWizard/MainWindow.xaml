@@ -97,9 +97,9 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="Preview_TextBox" Background="Transparent" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Margin="0,0,0,12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Exodia" Margin="3" Padding="2" Command="local:OutputCommand.Print_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}>Drukuj</Button>
-                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Command="local:OutputCommand.Copy_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}>Skopiuj do schowka</Button>
-                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Command="local:OutputCommand.Save_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}>Zapisz do pliku</Button>
+                <Button x:Name="Exodia" Margin="3" Padding="2" Command="local:OutputCommand.Print_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Drukuj</Button>
+                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Command="local:OutputCommand.Copy_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Skopiuj do schowka</Button>
+                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Command="local:OutputCommand.Save_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Zapisz do pliku</Button>
             </StackPanel>
         </Grid>
     </Grid>
