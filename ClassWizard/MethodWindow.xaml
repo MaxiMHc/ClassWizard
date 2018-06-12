@@ -40,6 +40,10 @@
             <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
         </EventTrigger>
     </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
+        <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
+    </Window.CommandBindings>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -78,7 +82,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Margin="5" Padding="3">Zwracany typ:</Label>
                 <ComboBox Name="_Type" Grid.Row="2" Grid.Column="1" Margin="5" Padding="3"></ComboBox>
                 <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Keywords">
-                    <WrapPanel  HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center">
+                    <WrapPanel Name="_KeyWord"  HorizontalAlignment="Center" Margin="8" VerticalAlignment="Center">
                         <CheckBox Margin="8">static</CheckBox>
                         <CheckBox Margin="8">override</CheckBox>
                         <CheckBox Margin="8">const</CheckBox>
@@ -102,8 +106,8 @@
 
                         </ListBox>
                         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">↑</Button>
-                            <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">↓</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Arguments}" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">↑</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Arguments}" Background="{Binding ElementName=Metoda_Dodaj, Path=Background}">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">

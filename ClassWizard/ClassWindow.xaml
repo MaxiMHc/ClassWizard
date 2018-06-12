@@ -41,6 +41,10 @@
             <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
         </EventTrigger>
     </Window.Triggers>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
+        <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
+    </Window.CommandBindings>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -114,12 +118,12 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Margin="5,0">Nazwa:</Label>
                         <TextBox Name="_InterfaceTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></TextBox>
-                        <ListBox Name="_ImplementedInterfaces" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="3" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListBox Name="_ImplementedInterfaces" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" Padding="3" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="_ImplementedInterfaces_SelectionChanged">
 
                         </ListBox>
                         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
-                            <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↑</Button>
-                            <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↓</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_ImplementedInterfaces}" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↑</Button>
+                            <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_ImplementedInterfaces}" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↓</Button>
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="Class_Inter_Dodaj" Margin="3" Padding="2" Width="80" Click="Inter_Dodaj_Click">
@@ -150,8 +154,8 @@
 
                 </ListBox>
                 <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                    <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↑</Button>
-                    <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↓</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=Class_Pole_List}" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↑</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=Class_Pole_List}" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↓</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="Class_Pole_Dodaj" Margin="3" Padding="2" Width="80" Click="Pole_Dodaj_Click" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">Dodaj</Button>
@@ -174,8 +178,8 @@
 
                 </ListBox>
                 <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                    <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↑</Button>
-                    <Button Margin="3" Padding="2" Width="20" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↓</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Method_List}" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↑</Button>
+                    <Button Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Method_List}" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">↓</Button>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="Class_Metoda_Dodaj" Margin="3" Padding="2" Width="80" Click="Metoda_Dodaj_Click" Background="{Binding ElementName=Class_Inter_Dodaj, Path=Background}">Dodaj</Button>

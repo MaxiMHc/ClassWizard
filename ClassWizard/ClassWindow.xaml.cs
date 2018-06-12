@@ -38,6 +38,16 @@ namespace ClassWizard
                 _InheritanceTextBox.Text = MainClassObject.Inheritance;
                 _AccessModifier.ItemsSource = accessMod.Modifiers;
                 _AccessModifier.SelectedItem = MainClassObject.AccessModifier;
+                foreach(string keyword in MainClassObject.Keywords)
+                {
+                    foreach(CheckBox chk in _KeyWords.Children)
+                    {
+                        if(keyword == chk.Content.ToString())
+                        {
+                            chk.IsChecked = true;
+                        }
+                    }
+                }
             }
             else
             {
@@ -96,6 +106,7 @@ namespace ClassWizard
 
         private void Inter_Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            _ImplementedInterfaces.SelectedIndex = -1;
             MainClassObject.Interfaces.Add(_InterfaceTextBox.Text);
             _InterfaceTextBox.Text = "";
             _ImplementedInterfaces.Items.Refresh();
@@ -103,7 +114,11 @@ namespace ClassWizard
 
         private void Inter_Edytuj_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_ImplementedInterfaces.SelectedIndex !=-1)
+            {
+                MainClassObject.Interfaces[_ImplementedInterfaces.SelectedIndex] = _InterfaceTextBox.Text;
+            }
+            _ImplementedInterfaces.Items.Refresh();
         }
 
         private void Inter_Usun_Click(object sender, RoutedEventArgs e)
@@ -163,10 +178,66 @@ namespace ClassWizard
             }
             MainClassObject.Name = _Name.Text;
             MainClassObject.AccessModifier = _AccessModifier.Text;
+            MainClassObject.Keywords = new List<string>();
+            foreach(CheckBox keyword in _KeyWords.Children)
+            {
+                if(keyword.IsChecked == true)
+                {
+                    MainClassObject.Keywords.Add(keyword.Content.ToString());
+                }
+            }
             DialogResult = true;
             Close();
         }
 
-       
+
+        private void _ImplementedInterfaces_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(_ImplementedInterfaces.SelectedIndex != -1)
+            _InterfaceTextBox.Text = MainClassObject.Interfaces[_ImplementedInterfaces.SelectedIndex];
+        }
+
+        private void UpCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex > 0)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void UpExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex--;
+            }
+        }
+        private void DownCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex != (Argument_List.Items.Count - 1))
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void DownExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex++;
+            }
+        }
+
+        
     }
 }

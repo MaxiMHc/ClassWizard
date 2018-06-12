@@ -37,6 +37,13 @@
             </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:OutputCommand.Print_Init" CanExecute="PrintCanExecute" Executed="PrintExecuted" />
+        <CommandBinding Command="local:OutputCommand.Copy_Init" CanExecute="CopyCanExecute" Executed="CopyExecuted" />
+        <CommandBinding Command="local:OutputCommand.Save_Init" CanExecute="SaveCanExecute" Executed="SaveExecuted" />
+        <CommandBinding Command="local:Arrow.GoUp" CanExecute="UpCanExecute" Executed="UpExecuted" />
+        <CommandBinding Command="local:Arrow.GoDown" CanExecute="DownCanExecute" Executed="DownExecuted" />
+    </Window.CommandBindings>
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
@@ -67,8 +74,8 @@
 
             </ListBox>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Click="Up_Button_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">↑</Button>
-                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Click="Down_Button_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">↓</Button>
+                <Button x:Name="Up_Button" Margin="3" Padding="2" Width="20" Command="local:Arrow.GoUp" CommandParameter="{Binding ElementName=_Class_List}" Background="{Binding ElementName=Main_Dodaj, Path=Background}">↑</Button>
+                <Button x:Name="Down_Button" Margin="3" Padding="2" Width="20" Command="local:Arrow.GoDown" CommandParameter="{Binding ElementName=_Class_List}" Background="{Binding ElementName=Main_Dodaj, Path=Background}">↓</Button>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Main_Dodaj" Margin="3" Padding="2" Width="80" Click="Dodaj_Click">
@@ -90,9 +97,9 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="Preview_TextBox" Background="Transparent" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="12" IsReadOnly="True"></TextBox>
             <StackPanel Margin="0,0,0,12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Exodia" Margin="3" Padding="2" Click="Exodia_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Generuj kod!</Button>
-                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Click="CopyTo_Clipboard_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Skopiuj do schowka</Button>
-                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Click="CopyTo_File_Click" Background="{Binding ElementName=Main_Dodaj, Path=Background}">Zapisz do pliku</Button>
+                <Button x:Name="Exodia" Margin="3" Padding="2" Command="local:OutputCommand.Print_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}>Drukuj</Button>
+                <Button x:Name="CopyTo_Clipboard" Margin="3" Padding="2" Command="local:OutputCommand.Copy_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}>Skopiuj do schowka</Button>
+                <Button x:Name="CopyTo_File" Margin="3" Padding="2" Command="local:OutputCommand.Save_Init" Background="{Binding ElementName=Main_Dodaj, Path=Background}>Zapisz do pliku</Button>
             </StackPanel>
         </Grid>
     </Grid>

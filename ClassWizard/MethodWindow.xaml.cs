@@ -34,6 +34,16 @@ namespace ClassWizard
                 _Arguments.ItemsSource = Method.Arguments;
                 _Access.SelectedItem = Method.AccessModifier;
                 _Type.SelectedItem = Method.ReturnType;
+                foreach (string keyword in Method.Keywords)
+                {
+                    foreach (CheckBox chk in _KeyWord.Children)
+                    {
+                        if (keyword == chk.Content.ToString())
+                        {
+                            chk.IsChecked = true;
+                        }
+                    }
+                }
             }
             else
             {
@@ -86,9 +96,58 @@ namespace ClassWizard
             Method.Name = _Name.Text;
             Method.ReturnType = _Type.Text;
             Method.AccessModifier = _Access.Text;
-            Method.ReturnType = _Type.Text; 
+            Method.ReturnType = _Type.Text;
+            Method.Keywords = new List<string>();
+            foreach (CheckBox keyword in _KeyWord.Children)
+            {
+                if (keyword.IsChecked == true)
+                {
+                    Method.Keywords.Add(keyword.Content.ToString());
+                }
+            }
             DialogResult = true;
             this.Close();
         }
+        private void UpCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if(!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex > 0)
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void UpExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex--;
+            }
+        }
+        private void DownCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                if (Argument_List.SelectedIndex != (Argument_List.Items.Count-1))
+                    e.CanExecute = true;
+                else
+                    e.CanExecute = false;
+            }
+        }
+
+        private void DownExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ListBox Argument_List = (ListBox)e.Parameter;
+            if (!(Argument_List == null))
+            {
+                Argument_List.SelectedIndex++;
+            }
+        }
     }
+    
 }
