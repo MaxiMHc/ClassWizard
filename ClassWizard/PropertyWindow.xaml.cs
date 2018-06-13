@@ -60,7 +60,20 @@ namespace ClassWizard
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            //pole.Keywords = new List<string>();
+            if(_Name.Text == "" || _Name.Text == null)
+            {
+                MessageBox.Show("Pole musi posiadać nazwę", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            foreach (PropertyObject Item in Application.Current.Windows.OfType<ClassWindow>().FirstOrDefault().MainClassObject.Properties)
+            {
+                if (_Name.Text == Item.Name)
+                {
+                    MessageBox.Show("Pole o danej nazwie już istnieje", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
             pole.Name = _Name.Text;
             pole.AccessModifier = this.AccessModifier.Text;
             pole.Type = Type.Text;

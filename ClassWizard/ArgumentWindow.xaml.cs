@@ -52,6 +52,22 @@ namespace ClassWizard
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
         {
+            if (_Name.Text == "" || _Name.Text == null)
+            {
+                MessageBox.Show("Argument musi posiadać nazwę", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            MethodWindow mainw = Application.Current.Windows.OfType<MethodWindow>().FirstOrDefault();
+
+            foreach (ArgumentObject Item in mainw.Method.Arguments)
+            {
+                if (_Name.Text == Item.Name)
+                {
+                    MessageBox.Show("Argument o danej nazwie już istnieje", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
             NewArgument.Name = _Name.Text;
             NewArgument.Type = _TypeArg.Text;
             NewArgument.Keywords = new List<string>();
