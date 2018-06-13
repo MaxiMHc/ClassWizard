@@ -68,10 +68,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Name="_ClassOrInterface" Grid.Row="0" Grid.ColumnSpan="2">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <RadioButton Margin="3">Klasa</RadioButton>
-                        <RadioButton Margin="3">Interfejs</RadioButton>
+                <GroupBox  Grid.Row="0" Grid.ColumnSpan="2">
+                    <StackPanel Name="_ClassOrInterface" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton IsChecked="True" Margin="3">class</RadioButton>
+                        <RadioButton Margin="3">interface</RadioButton>
                     </StackPanel>
                 </GroupBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="5" Padding="3">Nazwa:</Label>

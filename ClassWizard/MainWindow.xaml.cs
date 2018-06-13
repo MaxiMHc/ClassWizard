@@ -99,8 +99,6 @@ namespace ClassWizard
             Preview_TextBox.Text = co.ToFinalString();
 
             Classes.Add(co);
-            Classes.Add(co);
-            Classes.Add(co);
 
             _Class_List.ItemsSource = Classes;
 

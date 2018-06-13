@@ -25,9 +25,7 @@ namespace ClassWizard
 
         public ClassWindow()
         {
-
             var accessMod = new BasicDataCollection();
-
             InitializeComponent();
 
             if (main._Class_List.SelectedIndex != -1)
@@ -48,8 +46,19 @@ namespace ClassWizard
                         }
                     }
                 }
+                foreach (RadioButton type in _ClassOrInterface.Children)
+                {
+                    if (MainClassObject.Type == "class" && type.Content.ToString() == "class")
+                    {
+                        type.IsChecked = true;
+                    }
+                    else if(MainClassObject.Type == "interface" && type.Content.ToString() == "interface")
+                    {
+                        type.IsChecked = true;
+                    }
+                }
 
-                if(MainClassObject.Interfaces.Count != 0)
+                if (MainClassObject.Interfaces.Count != 0)
                 {
                     _InterfaceCheckBox.IsChecked = true;
                 }
@@ -177,7 +186,36 @@ namespace ClassWizard
 
         private void Zatwierdz_Click(object sender, RoutedEventArgs e)
         {
-            if(_InheritanceCheckBox.IsChecked == true)
+            if (main._Class_List.SelectedIndex != -1)
+            {
+                var index = main._Class_List.SelectedIndex;
+                foreach(ClassObject klasa in main.Classes)
+                {
+                    if(_Name.Text == klasa.Name && main.Classes[index] != klasa)
+                    {
+                        MessageBox.Show("Nie moze byc dwoch klas o tych samych nazwach");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                foreach (ClassObject klasa in main.Classes)
+                {
+                    if (_Name.Text == klasa.Name)
+                    {
+                        MessageBox.Show("Nie moze byc dwoch klas o tych samych nazwach","Error!",MessageBoxButton.OK,MessageBoxImage.Error);
+                        return;
+                    }
+                }
+            }
+            if(_Name.Text == "")
+            {
+                MessageBox.Show("Klasa musi posiadac nazwe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (_InheritanceCheckBox.IsChecked == true)
             {
                 MainClassObject.Inheritance = _InheritanceTextBox.Text;
             }
@@ -191,6 +229,14 @@ namespace ClassWizard
                     MainClassObject.Keywords.Add(keyword.Content.ToString());
                 }
             }
+            foreach(RadioButton type in _ClassOrInterface.Children)
+            {
+                if (type.IsChecked == true)
+                {
+                    MainClassObject.Type = type.Content.ToString();
+                }
+            }
+            
             DialogResult = true;
             Close();
         }

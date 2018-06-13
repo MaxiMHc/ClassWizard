@@ -159,6 +159,7 @@ namespace ClassWizard
             DataTypes.Add("uint");
             DataTypes.Add("ulong");
             DataTypes.Add("ushort");
+            DataTypes.Add("string");
         }
     }
 
