@@ -48,6 +48,11 @@ namespace ClassWizard
                         }
                     }
                 }
+
+                if(MainClassObject.Interfaces.Count != 0)
+                {
+                    _InterfaceCheckBox.IsChecked = true;
+                }
             }
             else
             {
