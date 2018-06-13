@@ -164,6 +164,7 @@ namespace ClassWizard
             TextBlock Class_Text = new TextBlock();
             Class_Text.Measure(new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight));
             Class_Text.Arrange(new Rect(new Point(50,50),new Point(printDialog.PrintableAreaWidth, printDialog.PrintableAreaWidth)));
+            Class_Text.Text = Preview_TextBox.Text.Replace("\n", Environment.NewLine);
             if (printDialog.ShowDialog().GetValueOrDefault())
             {
                 printDialog.PrintVisual(Class_Text, "Printing Class");
