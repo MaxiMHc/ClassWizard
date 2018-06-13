@@ -204,7 +204,8 @@ namespace ClassWizard
                 {
                     if (_Name.Text == klasa.Name)
                     {
-                        MessageBox.Show("Nie moze byc dwoch klas o tych samych nazwach","Error!",MessageBoxButton.OK,MessageBoxImage.Error);
+                        MessageBox.Show("Nie moze byc dwoch klas o tych samych nazwach",
+                            "Error!",MessageBoxButton.OK,MessageBoxImage.Error);
                         return;
                     }
                 }

@@ -91,6 +91,8 @@ namespace ClassWizard
             _Arguments.Items.Refresh();
         }
 
+        
+
         private void Zatwierdz_Method_Click(object sender, RoutedEventArgs e)
         {
             Method.Name = _Name.Text;
